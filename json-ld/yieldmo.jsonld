@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://yieldmo.com",
+  "name": "Yieldmo",
+  "url": "https://yieldmo.com",
+  "description": "Yieldmo is a programmatic native advertising marketplace and smart exchange that differentiates and enhances the value of ad inventory for buyers and sellers. The platform provides REST APIs and JavaScript SDKs for managing ad placements, proprietary ad formats, contextual targeting, publisher inventory monetization, and campaign performance analytics powered by attention data and machine learning.",
+  "logo": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+  "email": "info@yieldmo.com",
+  "sameAs": [
+    "https://github.com/yieldmo",
+    "https://www.linkedin.com/company/yieldmo",
+    "https://x.com/yieldmo"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "support@yieldmo.com",
+    "contactType": "technical support"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Yieldmo API and SDK Products",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Yieldmo JavaScript SDK API",
+        "description": "JavaScript SDK providing publisher-side API methods for managing ad placements and requesting page views in single-page applications and infinite scroll implementations.",
+        "url": "https://github.com/yieldmo/yieldmo-js-sdk/wiki"
+      },
+      {
+        "@type": "Offer",
+        "name": "Yieldmo Prebid.js Bid Adapter",
+        "description": "Header bidding integration adapter for Prebid.js enabling publishers to receive bids from Yieldmo's exchange for display and video inventory.",
+        "url": "https://docs.prebid.org/dev-docs/bidders/yieldmo.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Yieldmo Synthetic Inventory Module",
+        "description": "Prebid.js module enabling publishers to integrate Yieldmo Synthetic Outstream ads by automatically creating placements and injecting the Yieldmo SDK.",
+        "url": "https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Yieldmo YMax Platform API",
+        "description": "Proprietary programmatic exchange and creative intelligence platform offering curated inventory access, contextual targeting, attention analytics, and deal management for advertisers and demand-side partners.",
+        "url": "https://yieldmo.com/technology/"
+      }
+    ]
+  },
+  "keywords": [
+    "Advertising",
+    "Programmatic",
+    "Native Advertising",
+    "Ad Exchange",
+    "Publisher Monetization",
+    "Header Bidding",
+    "Contextual Targeting",
+    "Ad Formats",
+    "Supply-Side Platform",
+    "SSP"
+  ]
+}
