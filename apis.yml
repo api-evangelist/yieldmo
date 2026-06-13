@@ -1,0 +1,118 @@
+aid: yieldmo
+name: Yieldmo
+description: Yieldmo is a programmatic native advertising marketplace and smart exchange that differentiates and enhances the value of ad inventory for buyers and sellers. The platform provides REST APIs and JavaScript SDKs for managing ad placements, proprietary ad formats, contextual targeting, publisher inventory monetization, and campaign performance analytics powered by attention data and machine learning.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/yieldmo/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Advertising
+  - Programmatic
+  - Native Advertising
+  - Ad Exchange
+  - Publisher Monetization
+  - Header Bidding
+  - Contextual Targeting
+  - Ad Formats
+  - Supply-Side Platform
+  - SSP
+apis:
+  - name: Yieldmo JavaScript SDK API
+    description: JavaScript SDK providing publisher-side API methods for managing ad placements and requesting page views in single-page applications and infinite scroll implementations. Enables dynamic ad loading without full page refreshes using placement IDs obtained from Yieldmo account management.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+    baseURL: https://ads.yieldmo.com
+    tags:
+      - JavaScript SDK
+      - Ad Placements
+      - Publisher
+      - Single Page App
+    properties:
+      - type: Documentation
+        url: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+      - type: GitHubRepository
+        url: https://github.com/yieldmo/yieldmo-js-sdk
+    contact:
+      - FN: Yieldmo Support
+        email: support@yieldmo.com
+  - name: Yieldmo Prebid.js Bid Adapter
+    description: Header bidding integration adapter for Prebid.js enabling publishers to receive bids from Yieldmo's exchange for display and video inventory. Supports placement-based targeting with optional bid floors and user identity modules for privacy-compliant audience matching.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+    baseURL: https://ads.yieldmo.com
+    tags:
+      - Header Bidding
+      - Prebid.js
+      - Display
+      - Video
+      - Publisher
+    properties:
+      - type: Documentation
+        url: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+      - type: GitHubRepository
+        url: https://github.com/yieldmo/Prebid.js
+    contact:
+      - FN: Yieldmo Support
+        email: support@yieldmo.com
+  - name: Yieldmo Synthetic Inventory Module
+    description: Prebid.js module enabling publishers to integrate Yieldmo Synthetic Outstream ads by automatically creating placements and injecting the Yieldmo SDK. Requires a Yieldmo placement ID and Google Ad Manager ad unit path to deliver proprietary outstream video and high-impact ad formats.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
+    baseURL: https://ads.yieldmo.com
+    tags:
+      - Synthetic Inventory
+      - Prebid.js
+      - Outstream Video
+      - Google Ad Manager
+      - Publisher
+    properties:
+      - type: Documentation
+        url: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
+    contact:
+      - FN: Yieldmo Support
+        email: support@yieldmo.com
+  - name: Yieldmo YMax Platform API
+    description: Proprietary programmatic exchange and creative intelligence platform offering curated inventory access, contextual targeting, attention analytics, and deal management for advertisers and demand-side partners. Integrates with all major DSPs and supports PMP deal setup via The Trade Desk Easy Proposal API workflow.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://yieldmo.com/technology/
+    baseURL: https://yieldmo.com
+    tags:
+      - Exchange
+      - Programmatic
+      - Advertiser
+      - PMP Deals
+      - Attention Analytics
+      - DSP Integration
+    properties:
+      - type: Documentation
+        url: https://yieldmo.com/technology/
+    contact:
+      - FN: Yieldmo Sales
+        email: info@yieldmo.com
+common:
+  - type: Website
+    url: https://yieldmo.com
+  - type: Documentation
+    url: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  - type: GitHubOrg
+    url: https://github.com/yieldmo
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/yieldmo
+  - type: Blog
+    url: https://yieldmo.com/category/blog/
+  - type: Pricing
+    url: https://yieldmo.com/solutions/
+  - type: StatusPage
+    url: https://yieldmo.com
+  - type: X
+    url: https://x.com/yieldmo
+  - type: Plans
+    url: plans/yieldmo-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/yieldmo-rate-limits.yml
+  - type: FinOps
+    url: finops/yieldmo-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

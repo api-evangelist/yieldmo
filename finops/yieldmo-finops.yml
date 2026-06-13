@@ -1,0 +1,42 @@
+name: Yieldmo FinOps
+description: Financial operations considerations for teams integrating with Yieldmo's programmatic advertising marketplace. Yieldmo operates on negotiated commercial terms for both publisher and advertiser relationships. Cost management focuses on CPM efficiency, attention-based optimization, and deal structure rather than API call metering.
+url: https://yieldmo.com/solutions/
+models:
+  - name: Publisher Revenue Share
+    type: Revenue Share
+    description: Publishers earn a percentage of advertising revenue generated through Yieldmo's demand. The revenue share percentage is negotiated per partnership. Yieldmo's YMax platform optimizes yield by maximizing CPMs through attention analytics, predictive audience matching, and proprietary ad format differentiation.
+    considerations:
+      - Revenue share rates are negotiated and not publicly disclosed
+      - Publishers should instrument Yieldmo alongside other header bidding partners to benchmark contribution
+      - Proprietary ad formats (20+) can command premium CPMs relative to standard IAB formats
+      - Attention analytics data may improve overall yield optimization beyond Yieldmo-sourced revenue
+  - name: Advertiser CPM Spend
+    type: CPM (Cost Per Mille)
+    description: Advertisers pay on a CPM basis for impressions delivered through Yieldmo's curated inventory. PMP deals provide price floor certainty while open exchange access provides scale. The YMax platform's attention optimization aims to improve effective CPM efficiency by targeting high-engagement placements.
+    considerations:
+      - CPM rates vary by format (Display, Native, High-Impact, Video, CTV), targeting parameters, and deal type (PMP vs. open exchange)
+      - High-Impact and proprietary formats typically command premium CPMs
+      - Cookieless contextual targeting may reduce targeting premiums compared to cookie-based buys
+      - Budget allocation across DSP integrations should account for Yieldmo's unique inventory vs. overlap with other SSPs
+  - name: PMP Deal Spend
+    type: Fixed CPM / Negotiated Floor
+    description: Private Marketplace deals between advertisers and publishers through Yieldmo establish pre-negotiated CPM floors and inventory access. The Trade Desk buyers can receive Yieldmo PMP deals directly via the Easy Proposal API, reducing operational overhead for deal activation.
+    considerations:
+      - PMP floors are negotiated per deal between buyer and Yieldmo account management
+      - Deal IDs are provisioned through Yieldmo's account management team
+      - TTD seat holders can receive deals automatically; other DSPs require manual deal ID entry
+cost_controls:
+  - name: Bid Floor Management
+    description: Prebid.js adapter supports an optional bidFloor parameter (numeric, e.g., 0.1) to prevent winning bids below a publisher-defined floor, enabling publishers to protect yield while controlling fill rate trade-offs.
+    parameter: bidFloor
+    type: optional
+  - name: Placement-Level Budgeting
+    description: Campaigns and deals are managed at the placement and deal level. Publishers should monitor performance per placement ID to identify high-value ad units and optimize allocation of Yieldmo demand.
+  - name: Timeout Optimization
+    description: In header bidding configurations, auction timeout settings (Prebid.js timeout parameter) affect Yieldmo's ability to return bids. Overly short timeouts reduce Yieldmo bid participation; overly long timeouts increase page latency. Recommended range is 1500-2500ms for balanced yield and performance.
+contact:
+  - purpose: Publisher Partnerships and Revenue Inquiries
+    email: info@yieldmo.com
+    phone: (646) 845-0800
+  - purpose: Technical Support
+    email: support@yieldmo.com

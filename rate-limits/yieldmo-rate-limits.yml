@@ -1,0 +1,29 @@
+name: Yieldmo Rate Limits
+description: Yieldmo does not publish explicit public rate limit documentation for its programmatic advertising APIs. The platform operates as a real-time bidding (RTB) exchange and managed advertising marketplace where throughput constraints are determined by infrastructure capacity and partnership agreements rather than published API quotas. Publishers using the JavaScript SDK and Prebid.js adapter operate within standard header bidding auction timeout windows. Contact Yieldmo account management for enterprise-level throughput requirements.
+url: https://yieldmo.com/solutions/
+rateLimits:
+  - scope: Prebid.js Header Bidding
+    description: Yieldmo's Prebid.js bid adapter participates in standard header bidding auctions governed by Prebid.js timeout configuration set by the publisher. Typical auction timeouts range from 1000ms to 3000ms. Yieldmo does not impose additional per-publisher rate limits beyond RTB auction participation constraints.
+    limits:
+      - name: Bid Request Timeout
+        value: Determined by publisher Prebid.js configuration
+        unit: milliseconds
+        notes: Standard range 1000-3000ms; publishers configure via pbjs.setConfig timeout
+  - scope: JavaScript SDK (ads.yieldmo.com)
+    description: Ad serving requests via the JavaScript SDK route to ads.yieldmo.com. The SDK's requestPageView method can be called on each virtual page view in single-page applications. No explicit per-session rate limits are documented; excessive calls beyond legitimate page view patterns may be filtered by Yieldmo's ad serving infrastructure.
+    limits:
+      - name: requestPageView calls
+        value: One per virtual page view
+        unit: per page load or virtual navigation
+        notes: Intended to mirror natural user navigation patterns; contact support@yieldmo.com for high-volume scenarios
+  - scope: RTB Exchange (YMax Platform)
+    description: Demand partners and DSPs integrating with Yieldmo's YMax exchange are subject to standard RTB infrastructure throughput and query-per-second (QPS) limits established through the partnership agreement. Yieldmo processes 10M+ predictions per second across its platform.
+    limits:
+      - name: QPS (Queries Per Second)
+        value: Negotiated per partnership
+        unit: requests per second
+        notes: Enterprise throughput available; contact info@yieldmo.com
+notes:
+  - Yieldmo does not publish a public rate limit reference page.
+  - All throughput and quota specifics should be confirmed with Yieldmo account management.
+  - Contact support@yieldmo.com or info@yieldmo.com for rate limit documentation under NDA or partnership agreement.

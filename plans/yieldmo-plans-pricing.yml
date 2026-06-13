@@ -1,0 +1,45 @@
+name: Yieldmo Plans and Pricing
+description: Yieldmo operates as an enterprise programmatic advertising marketplace. Pricing is negotiated directly through account management rather than published self-serve tiers. Publishers access the platform through managed partnerships, and advertisers engage via programmatic deals through DSP integrations or direct PMP arrangements.
+url: https://yieldmo.com/solutions/
+plans:
+  - name: Publisher Partnership
+    description: Managed publisher monetization program providing access to Yieldmo's demand via header bidding (Prebid.js adapter), direct deals, and proprietary ad formats. Revenue share model negotiated directly with Yieldmo account management. Includes access to YMax platform insights, actionable inventory analytics, and 20+ proprietary ad formats.
+    url: https://yieldmo.com/solutions/
+    pricing:
+      model: Revenue Share
+      terms: Negotiated per partnership agreement
+    features:
+      - Header bidding via Prebid.js adapter
+      - 20+ proprietary ad formats
+      - Attention analytics and inventory insights
+      - JavaScript SDK for single-page app support
+      - Synthetic Inventory Module for outstream video
+      - Google Ad Manager integration
+      - PMP deal access
+  - name: Advertiser / DSP Integration
+    description: Demand-side access to Yieldmo's curated premium publisher inventory through programmatic channels. Buyers integrate via existing DSP seats or through direct PMP deals. The Trade Desk buyers can receive deals automatically via the Easy Proposal API workflow without manual contract creation.
+    url: https://yieldmo.com/technology/
+    pricing:
+      model: CPM (Cost Per Mille)
+      terms: Negotiated per campaign or PMP deal; contact Yieldmo account management
+    features:
+      - Access to curated premium publisher inventory
+      - Display, Native, High-Impact, Video, and CTV formats
+      - Attention analytics optimization
+      - Cookieless contextual targeting
+      - Predictive companion audiences
+      - Easy Proposal API for The Trade Desk integration
+      - 80+ data signals per impression
+  - name: Enterprise / Custom
+    description: Custom engagement for large-scale advertisers or publishers seeking dedicated support, custom creative development through Yieldmo's CreativeLab, and bespoke campaign execution including Own Your Moment and PageMax premium formats.
+    url: https://yieldmo.com/request-a-demo/
+    pricing:
+      model: Custom
+      terms: Contact Yieldmo at info@yieldmo.com or (646) 845-0800
+    features:
+      - Custom creative development (CreativeLab)
+      - Own Your Moment multi-slot experiences
+      - PageMax two-sided marketplace formats
+      - Dedicated account management
+      - Custom reporting and analytics
+      - Bespoke targeting strategies
