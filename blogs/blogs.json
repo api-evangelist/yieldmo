@@ -1,6 +1,6 @@
 {
   "url": "https://yieldmo.com/category/blog/",
-  "fetched": "2026-06-13",
+  "fetched": "2026-06-14T20:42:17Z",
   "posts": [
     {
       "title": "Meet the Yieldmates: Sophia Su",
@@ -62,5 +62,13 @@
       "date": "2025-08",
       "description": "Employee profile highlighting Holly Danko."
     }
-  ]
+  ],
+  "repo": "yieldmo",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/yieldmo",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0
 }
