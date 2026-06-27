@@ -1,74 +1,18 @@
 {
-  "url": "https://yieldmo.com/category/blog/",
-  "fetched": "2026-06-14T20:42:17Z",
-  "posts": [
-    {
-      "title": "Meet the Yieldmates: Sophia Su",
-      "url": "https://yieldmo.com/meet-the-yieldmates-sophia-su/",
-      "date": "2026-05",
-      "description": "Employee spotlight featuring Sophia Su."
-    },
-    {
-      "title": "Introducing Creative that Connects: How We Build the Best Ad Experiences for Your Brand",
-      "url": "https://yieldmo.com/introducing-creative-that-connects-how-we-build-the-best-ad-experiences-for-your-brand/",
-      "date": "2026-03",
-      "description": "Discussion of Yieldmo's creative development approach for delivering high-impact advertising experiences."
-    },
-    {
-      "title": "AI Search Engines Are Multiplying. Few Will Get Advertising Right.",
-      "url": "https://yieldmo.com/ai-search-engines-are-multiplying-few-will-get-advertising-right/",
-      "date": "2026-02",
-      "description": "Analysis of advertising challenges and opportunities in emerging AI-powered search platforms."
-    },
-    {
-      "title": "Meet the Yieldmates: Matt Harold",
-      "url": "https://yieldmo.com/meet-the-yieldmates-matt-harold/",
-      "date": "2026-01",
-      "description": "Employee profile highlighting Matt Harold."
-    },
-    {
-      "title": "CES 2026: Human Discussions around the AI Revolution",
-      "url": "https://yieldmo.com/ces-2026-human-discussions-around-the-ai-revolution/",
-      "date": "2026-01",
-      "description": "Coverage of human-centered perspectives on AI at CES 2026."
-    },
-    {
-      "title": "Meet the Yieldmates: Brynn DiLonardo",
-      "url": "https://yieldmo.com/meet-the-yieldmates-brynn-dilonardo/",
-      "date": "2025-11",
-      "description": "Team member spotlight featuring Brynn DiLonardo."
-    },
-    {
-      "title": "Meet the Yieldmates: Mitch Krumm",
-      "url": "https://yieldmo.com/meet-the-yieldmates-mitch-krumm/",
-      "date": "2025-10",
-      "description": "Employee feature about Mitch Krumm."
-    },
-    {
-      "title": "Meet the Yieldmates: Isabella Alvarez",
-      "url": "https://yieldmo.com/meet-the-yieldmates-isabella-alvarez/",
-      "date": "2025-09",
-      "description": "Staff profile of Isabella Alvarez."
-    },
-    {
-      "title": "Meet the Yieldmates: Alyssa Budke",
-      "url": "https://yieldmo.com/meet-the-yieldmates-alyssa-budke/",
-      "date": "2025-08",
-      "description": "Team member spotlight featuring Alyssa Budke."
-    },
-    {
-      "title": "Meet the Yieldmates: Holly Danko",
-      "url": "https://yieldmo.com/meet-the-yieldmates-holly-danko/",
-      "date": "2025-08",
-      "description": "Employee profile highlighting Holly Danko."
-    }
-  ],
   "repo": "yieldmo",
   "feeds": [
+    {
+      "source": "https://yieldmo.com/category/blog/feed/",
+      "feed_url": "https://yieldmo.com/category/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
     {
       "source": "https://www.linkedin.com/company/yieldmo",
       "error": "HTTPError"
     }
   ],
+  "fetched": "2026-06-27T12:03:07Z",
   "post_count": 0
 }
