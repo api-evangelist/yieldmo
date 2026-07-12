@@ -1,0 +1,38 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: yieldmo.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 10 16:26:29 2026 GMT
+  hsts: false
+- host: ads.yieldmo.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb 26 23:59:59 2027 GMT
+  hsts: null
+- host: docs.prebid.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 20 08:30:18 2026 GMT
+  hsts: false
+domains:
+- domain: yieldmo.com
+  dnssec: false
+  caa:
+  - 0 issue "sectigo.com"
+  - 0 issue "symantec.com"
+  - 0 issuewild "amazon.com"
+  - 0 issuewild "amazonaws.com"
+  - 0 issuewild "amazontrust.com"
+  - 0 issuewild "awstrust.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: prebid.org
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
