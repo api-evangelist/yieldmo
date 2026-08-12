@@ -1,0 +1,145 @@
+generated: '2026-08-12'
+method: probed
+status: published
+source: https://api.yieldmo.com/.well-known/oauth-protected-resource
+discovery: >-
+  Found by probing api.yieldmo.com (an AWS API Gateway host that is not referenced anywhere in
+  Yieldmo's public marketing or documentation). /.well-known/oauth-protected-resource returns an
+  RFC 9728 protected-resource document naming https://api.yieldmo.com/dcs/mcp as the resource.
+  The server answers MCP JSON-RPC on that path and co-serves its own OpenAPI 3.1.0 at
+  /dcs/mcp/openapi.json.
+
+server:
+  name: yieldmo-dcs
+  transport: http                       # streamable HTTP (JSON-RPC over POST)
+  url: https://api.yieldmo.com/dcs/mcp
+  runtime: uvicorn / FastAPI (server header "uvicorn"; OpenAPI info.title "FastAPI")
+  openapi: openapi/yieldmo-dcs-mcp-openapi.json
+
+auth:
+  gated: true
+  methods: [oauth2]
+  challenge: >-
+    WWW-Authenticate: Bearer error="invalid_token",
+    error_description="Authentication required",
+    resource_metadata="https://api.yieldmo.com/.well-known/oauth-protected-resource/dcs/mcp"
+  oauth2:
+    issuer: https://api.yieldmo.com/dcs/mcp
+    authorization_endpoint: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/authorize
+    token_endpoint: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/token
+    registration_endpoint: https://api.yieldmo.com/dcs/mcp/register
+    revocation_endpoint: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/revoke
+    jwks_uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_vZfEMm5aZ/.well-known/jwks.json
+    identity_provider: Amazon Cognito (user pool us-east-1_vZfEMm5aZ, domain yieldmo-cuba)
+    scopes_supported: [openid, profile, email]
+    dynamic_client_registration: true   # RFC 7591; the spec labels the handler "Fake Registration Mcp"
+    discovery:
+      - well-known/yieldmo-oauth-protected-resource.json
+      - well-known/yieldmo-oauth-authorization-server.json
+      - well-known/yieldmo-openid-configuration.json
+
+live_introspection:
+  attempted: true
+  fetched: '2026-08-12'
+  methods_tried: [initialize, tools/list]
+  http_status: 401
+  result: >-
+    tools/list is OAuth-gated and returns 401 invalid_token anonymously, so the authoritative tool
+    names and inputSchemas were NOT obtained. The tool surface below is DERIVED from the server's own
+    co-served OpenAPI (which is anonymous and returns 200) — every operation listed is real and
+    verbatim from that spec, but the mapping of operation -> MCP tool NAME is inferred, not observed.
+    Yieldmo publishes no llms.txt and no MCP documentation, so there is no second published source.
+
+tool_surface:
+  method: derived
+  status: candidate                     # names inferred; the OPERATIONS are real
+  source: openapi/yieldmo-dcs-mcp-openapi.json
+  category: canned-reports (campaign reporting and analytics over Yieldmo's YMax exchange data)
+  count: 19
+  note: >-
+    All 19 operations are GET, read-only, and unauthenticated-undiscoverable only by path. Parameters
+    below are the real inputSchema an agent would receive, taken from the spec's parameters block.
+  tools:
+    - name: campaign_id_from_name
+      description: Look up campaign IDs from campaign names.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_id_from_name_canned_reports_campaign_id_from_name_get
+    - name: campaign_name_from_id
+      description: Look up campaign names from campaign IDs.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_name_from_id_canned_reports_campaign_name_from_id_get
+    - name: campaign_summary
+      description: Campaign summary with name, advertiser ID, and advertiser name.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_summary_canned_reports_campaign_summary_get
+    - name: child_campaign_ids_from_parent_name
+      description: Look up all child campaign IDs for one or more parent YMax campaigns.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#child_campaign_ids_from_parent_name_canned_reports_child_campaign_ids_from_parent_name_get
+    - name: campaign_performance
+      description: 'Campaign performance summary: impressions, clicks, CTR, spend, win rate.'
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_performance_canned_reports_campaign_performance_get
+    - name: campaign_daily_spend
+      description: Daily spend and impression breakdown over a date range.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_daily_spend_canned_reports_campaign_daily_spend_get
+    - name: campaign_daily_performance
+      description: Daily performance breakdown by date and segment, selectable by KPI.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_daily_performance_canned_reports_campaign_daily_performance_get
+    - name: campaign_metrics
+      description: 'Period-over-period performance metrics: impressions, KPI, spend, CPM, cost per action.'
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_metrics_canned_reports_campaign_metrics_get
+    - name: campaign_creative_performance
+      description: Creative-level performance by campaign (AdBuilder ID, format, MRC viewable impressions, VCR, spend).
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_creative_performance_canned_reports_campaign_creative_performance_get
+    - name: top_urls_by_campaign
+      description: Top performing URLs ranked by impressions, spend, or CTR.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#top_urls_by_campaign_canned_reports_top_urls_by_campaign_get
+    - name: top_bottom_urls
+      description: Top or bottom performing URLs ranked by a specified metric and sort direction.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#top_bottom_urls_canned_reports_top_bottom_urls_get
+    - name: campaign_biddable_object_url_performance
+      description: Performance at biddable object / segment / URL level.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_biddable_object_url_performance_canned_reports_campaign_biddable_object_url_performance_get
+    - name: web_campaign_check
+      description: Check whether a campaign has web/URL data available for a given date range.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#web_campaign_check_canned_reports_web_campaign_check_get
+    - name: campaign_segment_demographic
+      description: Audience demographic composition with Experian index scores.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_segment_demographic_canned_reports_campaign_segment_demographic_get
+    - name: segment_description
+      description: Look up segment descriptions by segment ID.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#segment_description_canned_reports_segment_description_get
+    - name: topic_id
+      description: Top 10 browser topics by campaign impressions with audience index scores.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#topic_id_canned_reports_topic_id_get
+    - name: campaign_feature_list_kpi
+      description: KPI and impressions broken down by feature list values (device type, browser, OS).
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#campaign_feature_list_kpi_canned_reports_campaign_feature_list_kpi_get
+    - name: conversion_types
+      description: Return all conversion type rows.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#conversion_types_canned_reports_conversion_types_get
+    - name: advertiser_data
+      description: Retargeting and attributed conversion data for an advertiser in one call.
+      source_operation: openapi/yieldmo-dcs-mcp-openapi.json#advertiser_data_canned_reports_advertiser_data_get
+
+operational_endpoints:
+  - path: /ping
+    status: 200
+    body: Healthy Connection
+    note: anonymous health check on api.yieldmo.com
+  - path: /dcs/mcp/manage/health
+    note: declared in the spec as operationId ping_dcs_mcp_manage_health_get
+
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - {url: 'https://api.yieldmo.com/.well-known/oauth-protected-resource', status: 200}
+    - {url: 'https://api.yieldmo.com/.well-known/oauth-authorization-server', status: 200}
+    - {url: 'https://api.yieldmo.com/.well-known/openid-configuration', status: 200}
+    - {url: 'https://api.yieldmo.com/dcs/mcp/openapi.json', status: 200}
+    - {url: 'https://api.yieldmo.com/dcs/mcp', status: 401, method: 'POST tools/list'}
+    - {url: 'https://api.yieldmo.com/ping', status: 200}
+
+notes: >-
+  This server is live and correctly instrumented for agent discovery (RFC 9728 protected-resource
+  metadata, RFC 8414 authorization-server metadata, RFC 7591 dynamic client registration, a
+  machine-readable OpenAPI) but is UNDOCUMENTED on Yieldmo's public surface: there is no mention of
+  it in the marketing site, the Prebid docs, the JS SDK wiki, or any press release, and Yieldmo
+  serves no llms.txt. It is a genuine published surface, not a candidate — but a buyer or agent has
+  no published path to it.

@@ -1,0 +1,119 @@
+generated: '2026-08-12'
+method: derived
+source: >-
+  Derived from openapi/yieldmo-dcs-mcp-openapi.json, the three /.well-known/ documents captured in
+  well-known/, the live 401 challenge from https://api.yieldmo.com/dcs/mcp, and the Prebid.js bidder
+  metadata at https://docs.prebid.org/dev-docs/bidders/yieldmo.html.
+
+standards:
+  - id: openapi-3.1
+    conforms: true
+    evidence: 'openapi/yieldmo-dcs-mcp-openapi.json declares openapi: 3.1.0 with 27 paths.'
+  - id: mcp
+    conforms: true
+    evidence: >-
+      Live MCP endpoint at https://api.yieldmo.com/dcs/mcp answering JSON-RPC over HTTP; returns an
+      RFC 9728-style Bearer challenge on tools/list. Protocol version not observable anonymously.
+  - id: oauth2
+    conforms: true
+    evidence: authorization_endpoint / token_endpoint / revocation_endpoint published; Bearer token in Authorization header.
+  - id: rfc8414-authorization-server-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns 200 with issuer, authorization_endpoint, token_endpoint, jwks_uri.
+  - id: rfc9728-protected-resource-metadata
+    conforms: partial
+    evidence: >-
+      /.well-known/oauth-protected-resource returns 200 with resource, authorization_servers,
+      bearer_methods_supported and scopes_supported. But the path-suffixed form advertised in the
+      WWW-Authenticate header (/.well-known/oauth-protected-resource/dcs/mcp) returns 404, so a
+      client that follows the challenge as specified cannot retrieve the metadata.
+  - id: rfc7591-dynamic-client-registration
+    conforms: partial
+    evidence: >-
+      registration_endpoint published at https://api.yieldmo.com/dcs/mcp/register; the OpenAPI names
+      the handler "Fake Registration Mcp", and the path returns 404 when probed from the host root.
+      Advertised but not verified to provision real clients.
+  - id: openid-connect-discovery
+    conforms: partial
+    evidence: >-
+      /.well-known/openid-configuration returns 200 but is byte-identical to the OAuth AS metadata;
+      issuer (https://api.yieldmo.com/dcs/mcp) does not match the endpoint host, and required OIDC
+      metadata (claims_supported, response_modes_supported) is absent.
+  - id: rfc6750-bearer-token
+    conforms: true
+    evidence: 'bearer_methods_supported: [header]; 401 with WWW-Authenticate: Bearer error="invalid_token".'
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors are FastAPI-native. 422 returns application/json HTTPValidationError ({detail:[{loc,msg,type}]});
+      401 returns {error, error_description}. No application/problem+json media type anywhere in the spec.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on api.yieldmo.com, ads.yieldmo.com and apps.yieldmo.com.
+  - id: a2a-agent-card
+    conforms: false
+    evidence: /.well-known/agent-card.json and /.well-known/agent.json return 404 on every readable Yieldmo host.
+  - id: asyncapi
+    conforms: false
+    evidence: No event, streaming or webhook surface published; no AsyncAPI document found. Not applicable to this provider.
+  - id: idempotency
+    conforms: false
+    evidence: All 19 business operations are GET and read-only; no Idempotency-Key header or equivalent exists or is needed.
+  - id: pagination
+    conforms: partial
+    evidence: >-
+      Several operations expose limit / num_entries caps (default 5000, 1000, 100, 50) but there is
+      no offset, cursor, page token, or total-count field. Results are truncated, not paginated.
+  - id: openrtb-2.5
+    conforms: true
+    evidence: >-
+      Yieldmo's Prebid video parameters (placement, protocols, api, playbackmethod, startdelay, pos)
+      are defined by reference to OpenRTB 2.5 lists 5.4/5.9/5.10 and §5.12.
+    source: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - id: prebid-js-bid-adapter
+    conforms: true
+    evidence: 'biddercode yieldmo; pbjs: true and pbs: true (both Prebid.js and Prebid Server adapters); prebid_member: true.'
+    source: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - id: iab-tcf-v2
+    conforms: true
+    evidence: 'tcfeu_supported: true; IAB Global Vendor List ID 173.'
+    source: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - id: iab-ccpa-usp
+    conforms: true
+    evidence: 'usp_supported: true in the Prebid bidder metadata.'
+    source: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - id: iab-gpp
+    conforms: true
+    evidence: 'gpp_supported: true in the Prebid bidder metadata.'
+    source: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - id: iab-supply-chain-schain
+    conforms: true
+    evidence: 'schain_supported: true in the Prebid bidder metadata.'
+    source: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - id: mraid-2.0
+    conforms: true
+    evidence: 'Yieldmo JS SDK wiki: "Yieldmo ads support any MRAID 2.0 compliant SDK."'
+    source: https://github.com/yieldmo/yieldmo-js-sdk/wiki/Home
+  - id: iab-sellers-json
+    conforms: unknown
+    evidence: >-
+      /sellers.json is 404 on ads.yieldmo.com and api.yieldmo.com; on yieldmo.com the request is
+      intercepted by a robot challenge (HTTP 202), so presence could not be determined.
+
+certifications:
+  published: false
+  note: >-
+    No SOC 2, ISO 27001, PCI DSS, HIPAA or FedRAMP claim was found on any readable Yieldmo host, and
+    probe-security-programs.py found no trust center. Yieldmo does publish privacy/data-protection
+    instruments (privacy policy, DPAs for supply and demand partners, processor list, opt-out), which
+    are regulatory disclosures rather than a certification program — so no Compliance pointer is
+    emitted. The apex site is behind a robot challenge, so absence here is unverified, not proven.
+
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - {url: 'https://api.yieldmo.com/dcs/mcp/openapi.json', status: 200}
+    - {url: 'https://api.yieldmo.com/.well-known/oauth-protected-resource/dcs/mcp', status: 404}
+    - {url: 'https://api.yieldmo.com/.well-known/security.txt', status: 404}
+    - {url: 'https://ads.yieldmo.com/sellers.json', status: 404}
+    - {url: 'https://docs.prebid.org/dev-docs/bidders/yieldmo.html', status: 200}

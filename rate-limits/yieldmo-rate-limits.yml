@@ -1,3 +1,21 @@
+generated: '2026-08-12'
+method: derived
+source: >-
+  Derived from Yieldmo's public surface and, this round, from the machine-readable contract at
+  openapi/yieldmo-dcs-mcp-openapi.json plus live responses observed on https://api.yieldmo.com.
+limit_count: 0
+limit_count_note: >-
+  Yieldmo publishes no numeric rate limits for any API. The scopes below describe throughput
+  CONSTRAINTS (auction timeouts, negotiated QPS), not published quotas.
+response_headers:
+  observed: []
+  checked: '2026-08-12'
+  detail: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header was present on any response observed from
+    api.yieldmo.com, and the OpenAPI declares no 429 on any operation. An agent has no runtime
+    rate-limit signal to read. The only correlation header served is AWS API Gateway's
+    apigw-requestid, which is not a rate-limit signal.
+  exhaustion_status_code: null
 name: Yieldmo Rate Limits
 description: Yieldmo does not publish explicit public rate limit documentation for its programmatic advertising APIs. The platform operates as a real-time bidding (RTB) exchange and managed advertising marketplace where throughput constraints are determined by infrastructure capacity and partnership agreements rather than published API quotas. Publishers using the JavaScript SDK and Prebid.js adapter operate within standard header bidding auction timeout windows. Contact Yieldmo account management for enterprise-level throughput requirements.
 url: https://yieldmo.com/solutions/

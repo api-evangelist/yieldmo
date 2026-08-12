@@ -1,0 +1,94 @@
+generated: '2026-08-12'
+method: probed
+source: live GET probes of /.well-known/* on every Yieldmo host in apis.yml plus the API host discovered this round
+summary:
+  hosts_probed: 5
+  documents_found: 3
+  security_txt: false
+  agent_card: false
+  api_catalog: false
+notes: >-
+  The three 200s all come from api.yieldmo.com and are served by the Yieldmo MCP application itself
+  (the same FastAPI app whose OpenAPI is captured at openapi/yieldmo-dcs-mcp-openapi.json — that spec
+  literally declares these three .well-known paths as operations). They are RFC 8414 / RFC 9728 / OIDC
+  discovery documents fronting an Amazon Cognito user pool named "yieldmo-cuba", which is what proves
+  ownership. www/apex yieldmo.com could not be read at all: every path returns HTTP 202 with a
+  Section.io "sgcaptcha" robot-challenge shell, so its /.well-known/ surface is unknown, not absent.
+
+hosts:
+  - host: https://api.yieldmo.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: yieldmo-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: yieldmo-oauth-authorization-server.json
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        content_type: application/json
+        file: yieldmo-oauth-protected-resource.json
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://ads.yieldmo.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://apps.yieldmo.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://yieldmo.com
+    unreadable: true
+    reason: >-
+      Every path — including / — answers HTTP 202 with a Section.io sgcaptcha robot-challenge HTML
+      shell (meta refresh to /.well-known/sgcaptcha/). No /.well-known/ result from this host is
+      trustworthy in either direction; recorded as unreadable rather than 404.
+    documents:
+      - path: /.well-known/security.txt
+        status: 202
+        note: robot-challenge HTML, not a document
+      - path: /.well-known/agent-card.json
+        status: 202
+        note: robot-challenge HTML, not a document — rejected, not counted as a hit
+      - path: /.well-known/agent.json
+        status: 202
+        note: robot-challenge HTML, not a document — rejected, not counted as a hit
+      - path: /.well-known/openid-configuration
+        status: 202
+        note: robot-challenge HTML, not a document
+  - host: https://www.yieldmo.com
+    unreadable: true
+    reason: same Section.io sgcaptcha robot challenge as the apex
+    documents:
+      - path: /
+        status: 202
+        note: robot-challenge HTML

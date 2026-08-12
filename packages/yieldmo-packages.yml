@@ -1,0 +1,107 @@
+generated: '2026-08-12'
+method: searched
+source: >-
+  Registry metadata endpoints queried directly on 2026-08-12 — registry.npmjs.org,
+  trunk.cocoapods.org, the yieldmo/maven-repository maven-metadata.xml, and the GitHub API for the
+  yieldmo org (15 repos) and prebid/Prebid.js.
+summary:
+  official_count: 4
+  registries: [github-maven, cocoapods, npm, cdn]
+  headline_finding: >-
+    Yieldmo publishes no client library for the MCP / DCS reporting API discovered this round, and no
+    package at all on npm, PyPI, RubyGems, crates.io or Maven Central. Every first-party SDK it does
+    ship is either abandoned (last release 2017) or distributed outside a registry. The living code
+    is the Prebid.js bid adapter, which Yieldmo authors but Prebid publishes.
+
+packages:
+  - language: javascript
+    registry: npm
+    name: prebid.js
+    url: https://www.npmjs.com/package/prebid.js
+    install: npm install prebid.js
+    official: false
+    official_note: >-
+      Published by the Prebid.org project, not Yieldmo. Yieldmo authors and maintains the
+      yieldmoBidAdapter.js module inside it (27 KB, modules/yieldmoBidAdapter.js) and is a Prebid
+      member (prebid_member: true), but the package itself is not a Yieldmo artifact.
+    version: 11.29.0
+    published: '2026-08-06'
+    contains:
+      - {module: yieldmoBidAdapter, biddercode: yieldmo, media_types: [banner, video], docs: 'https://docs.prebid.org/dev-docs/bidders/yieldmo.html'}
+      - {module: yieldmoSyntheticInventoryModule, docs: 'https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html'}
+    note: >-
+      This is the one Yieldmo-authored client surface under active maintenance. Yieldmo also
+      maintains a fork at github.com/yieldmo/Prebid.js (last pushed 2026-08-03).
+
+  - language: java
+    registry: github-maven
+    name: ym:ymsdk
+    url: https://github.com/yieldmo/maven-repository
+    install: 'maven { url "https://raw.githubusercontent.com/yieldmo/maven-repository/master" } — implementation "ym:ymsdk:4.1.3"'
+    official: true
+    version: 4.1.3
+    published: '2017-06-08'
+    published_source: 'maven-metadata.xml lastUpdated 20170608185000'
+    version_count: 13
+    note: >-
+      Yieldmo Android SDK, distributed as a self-hosted Maven repository in a GitHub repo rather than
+      via Maven Central. Not present on Maven Central. Last release June 2017 — nine years before the
+      Prebid adapter it would sit alongside, which is a hard abandonment signal.
+
+  - language: swift
+    registry: cocoapods
+    name: YieldmoSDK
+    url: https://cocoapods.org/pods/YieldmoSDK
+    install: "pod 'YieldmoSDK'"
+    official: true
+    version: 4.2.5
+    published: '2017-10-05'
+    published_source: 'https://trunk.cocoapods.org/api/v1/pods/YieldmoSDK (13 versions, last created_at 2017-10-05)'
+    version_count: 13
+    note: >-
+      Yieldmo iOS SDK. The supporting github.com/yieldmo/Specs (CocoaPods spec repo) and the
+      yieldmo-ios-beta repo are both stale; Specs is archived. Last release October 2017.
+
+  - language: javascript
+    registry: cdn
+    name: Yieldmo JavaScript SDK (window._ym)
+    url: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+    install: 'Publisher tag served from ads.yieldmo.com; placement IDs issued by Yieldmo account management.'
+    official: true
+    version: null
+    published: null
+    version_note: >-
+      Checked, nothing to record. The SDK is CDN-distributed from ads.yieldmo.com with no pinned
+      version in the loader URL, no registry entry, and no version surfaced to the publisher — a
+      consumer cannot tell which build they are running, and neither can we. The documenting repo
+      (github.com/yieldmo/yieldmo-js-sdk) last pushed 2018-09-04 and contains only a wiki.
+    api_surface:
+      - "window._ym.requestPageView(['<placementId>', ...]) — request new ads for placements already on the page (SPA / infinite scroll)"
+    source: https://github.com/yieldmo/yieldmo-js-sdk/wiki/Single-page-apps
+
+  - language: typescript
+    registry: none
+    name: ts-sdk-typings
+    url: https://github.com/yieldmo/ts-sdk-typings
+    official: true
+    version: null
+    published: null
+    version_note: >-
+      Checked, nothing to record. GitHub repo only — never published to npm, no releases, no tags,
+      no description. Last pushed 2022-01-11.
+
+registries_checked:
+  - {registry: npm, query: 'text=yieldmo', result: '0 packages; @yieldmo scope does not exist; yieldmo, yieldmo-js-sdk and @yieldmo/sdk all 404'}
+  - {registry: pypi, query: yieldmo, result: '404'}
+  - {registry: rubygems, query: yieldmo, result: '404'}
+  - {registry: crates.io, query: yieldmo, result: '403 (registry declined the anonymous request); no crate expected for an adtech SSP'}
+  - {registry: maven-central, query: yieldmo, result: 'search.maven.org timed out; the Android SDK is self-hosted on GitHub, not Central'}
+  - {registry: cocoapods, query: YieldmoSDK, result: '200, 13 versions'}
+  - {registry: pkg.go.dev, query: yieldmo, result: 'not checked — no Go surface indicated anywhere in the org or docs'}
+  - {registry: packagist, query: yieldmo, result: 'not checked — no PHP surface indicated anywhere in the org or docs'}
+
+decay_finding: >-
+  The gap between the API and the SDKs that wrap it is the story here. Yieldmo shipped a live,
+  OAuth-protected MCP + REST reporting API (discovered 2026-08-12) with zero client libraries, while
+  its two registry-published first-party SDKs — Android ym:ymsdk 4.1.3 and iOS YieldmoSDK 4.2.5 —
+  have not seen a release since 2017.

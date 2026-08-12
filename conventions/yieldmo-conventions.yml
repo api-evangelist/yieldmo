@@ -1,0 +1,137 @@
+generated: '2026-08-12'
+method: derived
+source: >-
+  Derived from openapi/yieldmo-dcs-mcp-openapi.json (27 paths / 19 business operations) and live
+  response headers observed on https://api.yieldmo.com on 2026-08-12. Yieldmo publishes no developer
+  documentation for this API, so nothing here is quoted from a docs page — every convention below was
+  read out of the machine-readable contract or off the wire.
+
+api:
+  name: Yieldmo DCS reporting API (behind the MCP server)
+  base_url: https://api.yieldmo.com/dcs/mcp
+  spec: openapi/yieldmo-dcs-mcp-openapi.json
+  style: REST, read-only
+  transport_note: >-
+    servers[] in the spec is the relative path "/dcs/mcp" with no host, so a client cannot resolve a
+    base URL from the spec alone. The host must be supplied out of band (api.yieldmo.com).
+
+authentication:
+  style: OAuth 2.0 Bearer token (Amazon Cognito)
+  header: 'Authorization: Bearer <token>'
+  declared_in_spec: false
+  detail: authentication/yieldmo-authentication.yml
+  scopes: scopes/yieldmo-scopes.yml
+  note: >-
+    The OpenAPI declares no securitySchemes and no security requirement on any operation. The auth
+    contract is discoverable only from /.well-known/ and from the 401 challenge.
+
+idempotency:
+  supported: false
+  applicable: false
+  reason: >-
+    All 19 business operations are GET and read-only, so they are idempotent by HTTP method. There is
+    no Idempotency-Key header, no request-id echo, and no write surface that would need one. No
+    Idempotency pointer is emitted in apis.yml — asserting one here would be false.
+
+pagination:
+  style: limit-only truncation
+  cursor: false
+  offset: false
+  total_count: false
+  parameters:
+    - {name: limit, applies_to: [campaign_performance, campaign_creative_performance], default: 5000}
+    - {name: limit, applies_to: [campaign_biddable_object_url_performance], default: 1000}
+    - {name: limit, applies_to: [top_urls_by_campaign], default: 100}
+    - {name: num_entries, applies_to: [top_bottom_urls], default: 50}
+    - {name: min_impressions, applies_to: [top_urls_by_campaign], default: 0, kind: filter}
+    - {name: min_imps, applies_to: [top_bottom_urls], default: 0, kind: filter}
+  gap: >-
+    There is no way to fetch page 2. A caller who hits the limit has a silently truncated result set
+    and no signal that truncation occurred. The same concept is also named inconsistently across
+    operations (limit vs num_entries, min_impressions vs min_imps).
+
+date_filtering:
+  primary_style: integer date keys in YYYYMMDD form
+  parameters:
+    - {name: start_date_key, type: integer, default: 19000101}
+    - {name: end_date_key, type: 'integer | null', default: null, note: null means open-ended / today}
+  secondary_style: ISO date strings
+  secondary_parameters:
+    - {name: start_time, type: string, format: YYYY-MM-DD, default: '1900-01-01', applies_to: [advertiser_data]}
+    - {name: end_time, type: 'string | null', format: YYYY-MM-DD, applies_to: [advertiser_data], note: exclusive; defaults to today}
+  gap: >-
+    Two incompatible date encodings coexist in one API — 17 operations take integer YYYYMMDD keys,
+    advertiser_data takes YYYY-MM-DD strings. The sentinel default 19000101 means an unparameterised
+    call requests all history.
+
+kpi_vocabulary:
+  parameter: kpi
+  default: ctr
+  applies_to: [campaign_daily_performance, campaign_metrics, top_bottom_urls, topic_id, campaign_feature_list_kpi]
+  values:
+    - ctr
+    - attn
+    - mrc
+    - mrc_cpm_non_video
+    - vcr_imps
+    - vcr_play
+    - play_rate
+    - cpm
+    - cpm_non_video
+    - cpm_video
+    - cpc
+    - cpcv
+    - groupm
+    - groupm_viewability
+  note: >-
+    Enumerated in prose inside the operation descriptions but typed as a bare string in the schema —
+    an agent gets no enum constraint and cannot validate the value before calling. "attn" is
+    Yieldmo's proprietary attention metric.
+
+array_parameters:
+  style: repeated query parameters (OpenAPI type array of string, in query)
+  examples: [campaign_ids, campaign_names, segment_ids, feature_list, parent_campaign_names_or_ids]
+  note: Most operations require campaign_ids as an array even for a single campaign.
+
+request_tracing:
+  request_id_header: null
+  observed_response_header: apigw-requestid
+  note: >-
+    AWS API Gateway emits apigw-requestid on every response. It is not documented, not echoed from a
+    client-supplied header, and not referenced in any error body — usable for a support ticket, not
+    for client-side correlation.
+
+versioning:
+  scheme: none
+  current: 'info.version 0.1.0 (FastAPI default; not a published API version)'
+  in_path: false
+  in_header: false
+  note: >-
+    There is no version segment in the path, no version header, and no dated version train. The only
+    version string is the framework default. Breaking changes would be undetectable to a client.
+  detail: lifecycle/yieldmo-lifecycle.yml
+
+error_envelope:
+  primary: 'HTTPValidationError — {"detail": [{"loc", "msg", "type"}]}'
+  auth: '{"error", "error_description"}'
+  gateway: '{"message"}'
+  problem_json: false
+  detail: errors/yieldmo-problem-types.yml
+
+rate_limits:
+  documented: false
+  headers_observed: []
+  detail: rate-limits/yieldmo-rate-limits.yml
+  note: No X-RateLimit-*, RateLimit-* or Retry-After header was present on any observed response, and no 429 is declared in the spec.
+
+content_negotiation:
+  request: query parameters only; no request bodies on any business operation
+  response: application/json
+  compression: not advertised
+
+conventions_gaps:
+  - No operation carries a tag, so the spec cannot be grouped or split by resource.
+  - operationIds are FastAPI auto-generated (function name + path + method), e.g. campaign_performance_canned_reports_campaign_performance_get — long, path-coupled, and unstable if a route is renamed.
+  - No securitySchemes declared despite the API being fully authenticated.
+  - No response schemas — every 200 is an untyped object, so an agent cannot know the shape of a report before calling it.
+  - No examples anywhere in the spec.

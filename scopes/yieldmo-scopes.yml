@@ -1,0 +1,50 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  https://api.yieldmo.com/.well-known/oauth-authorization-server (scopes_supported) and
+  https://api.yieldmo.com/.well-known/oauth-protected-resource (scopes_supported for the resource)
+docs: null
+docs_note: >-
+  Yieldmo publishes no scopes or permissions reference page. Everything below was read off the
+  provider's own OAuth discovery documents. The OpenAPI at openapi/yieldmo-dcs-mcp-openapi.json
+  declares no securitySchemes at all, so no operation-level scope requirements can be derived —
+  the scope surface is identity-only.
+
+schemes:
+  - name: mcp-oauth2
+    source: well-known/yieldmo-oauth-authorization-server.json
+    issuer: https://api.yieldmo.com/dcs/mcp
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/authorize
+        tokenUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/token
+
+scopes:
+  - scope: openid
+    description: Standard OpenID Connect scope; returns the subject identifier. The only scope the protected resource itself advertises as required.
+    flows: [authorizationCode, implicit]
+    required_by_resource: true
+    sources:
+      - well-known/yieldmo-oauth-authorization-server.json
+      - well-known/yieldmo-oauth-protected-resource.json
+  - scope: profile
+    description: Standard OpenID Connect scope; returns basic profile claims.
+    flows: [authorizationCode, implicit]
+    required_by_resource: false
+    sources: [well-known/yieldmo-oauth-authorization-server.json]
+  - scope: email
+    description: Standard OpenID Connect scope; returns the email claim.
+    flows: [authorizationCode, implicit]
+    required_by_resource: false
+    sources: [well-known/yieldmo-oauth-authorization-server.json]
+
+analysis: >-
+  All three scopes are the stock OpenID Connect set emitted by an Amazon Cognito user pool. Yieldmo
+  has defined NO resource-server scopes of its own — there is no read/write split, no per-report or
+  per-advertiser scope, and no scope that constrains which campaigns or advertisers a token can
+  reach. Authorization for the 19 campaign-reporting operations is therefore entirely implicit in
+  the identity, enforced server-side and invisible to the client. An agent cannot request least
+  privilege against this API because no narrower privilege is offered.
+
+scope_count: 3
+provider_defined_scope_count: 0

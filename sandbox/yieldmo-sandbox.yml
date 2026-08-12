@@ -1,0 +1,80 @@
+generated: '2026-08-12'
+method: searched
+source: >-
+  https://raw.githubusercontent.com/prebid/Prebid.js/master/modules/yieldmoBidAdapter.js — the
+  Prebid.js bid adapter Yieldmo authors and maintains, read verbatim on 2026-08-12. Yieldmo publishes
+  no testing or sandbox documentation of its own; this is the only place a test environment is
+  disclosed, and it is disclosed in open-source code rather than in docs.
+caveat: >-
+  There is NO sandbox for the DCS reporting API / MCP server (api.yieldmo.com/dcs/mcp). It has one
+  environment, one Cognito pool, and no test-vs-live key separation of any kind. Everything below
+  concerns the ad-serving exchange only.
+
+test_vs_live:
+  separation: environment-by-hostname, triggered by a page-URL token
+  key_prefixes: null
+  key_prefixes_note: >-
+    No test/live credential split exists anywhere in Yieldmo's surface. Placement IDs are issued by
+    account management and are not marked test or live; the reporting API uses one OAuth pool.
+  environments:
+    - name: production
+      host: https://ads.yieldmo.com
+      paths:
+        - {path: /exchange/prebid, media_type: banner}
+        - {path: /exchange/prebidvideo, media_type: video}
+        - {path: /pbcas, purpose: Prebid cookie-assist user sync}
+      constant: PROD_DOMAIN
+    - name: stage
+      host: https://ads-stg.yieldmo.com
+      paths:
+        - {path: /exchange/prebid, media_type: banner}
+        - {path: /exchange/prebidvideo, media_type: video}
+      constant: STAGE_DOMAIN
+      access: unknown — the host is named in open-source code but Yieldmo publishes nothing about who may use it
+
+trigger:
+  mechanism: page URL substring
+  token: pb_force_a
+  implementation: |
+    function isStage(bidderRequest) {
+      return !!bidderRequest.refererInfo?.page?.includes('pb_force_a');
+    }
+  description: >-
+    The adapter routes bid requests to ads-stg.yieldmo.com instead of ads.yieldmo.com whenever the
+    page URL contains the substring "pb_force_a". There is no Prebid config flag, no setConfig
+    option, and no documentation of this behaviour — it is a URL-token switch discoverable only by
+    reading the adapter source.
+  note: >-
+    Because the switch keys on any page URL containing that substring, it is an environment selector
+    a publisher can trip accidentally as well as deliberately.
+
+test_values:
+  published: false
+  note: >-
+    Yieldmo publishes no magic test placement IDs, no test creative IDs, and no simulator values.
+    The only concrete identifier in the public documentation is the example placementId
+    '825209316101005155' in the Prebid bidder table, which is documentation formatting rather than a
+    working test value — do not use it as one.
+
+fixtures_and_tooling:
+  - name: Yieldmo QA app
+    url: https://github.com/yieldmo/yieldmo-js-sdk/wiki/Using-Yieldmo-QA-app
+    description: Advertiser-side QA tool referenced from the JS SDK wiki for previewing Yieldmo ad units.
+    availability: wiki page exists; the app itself is not publicly distributed.
+  - name: Creative format gallery (AdBuilder)
+    url: https://formats.yieldmo.com/
+    description: Live demo gallery of Yieldmo's ad formats. Publicly reachable (HTTP 200) and the closest thing to a playground Yieldmo offers.
+  - name: SPA example page
+    url: http://test.yieldmo.com/example_pages/publisher/infinite_scroll/request_pageview2.html
+    description: Sample single-page-app integration referenced from the JS SDK wiki. Served over plain HTTP in the wiki link.
+    availability: unverified this round.
+
+test_clocks: false
+time_simulation: false
+
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - {url: 'https://raw.githubusercontent.com/prebid/Prebid.js/master/modules/yieldmoBidAdapter.js', status: 200}
+    - {url: 'https://formats.yieldmo.com/', status: 200}
+    - {url: 'https://api.yieldmo.com/dcs/mcp', status: 401, note: single environment, no sandbox variant found}

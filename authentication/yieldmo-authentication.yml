@@ -1,0 +1,104 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  https://api.yieldmo.com/.well-known/oauth-authorization-server and
+  https://api.yieldmo.com/.well-known/openid-configuration (both HTTP 200, anonymous), plus the
+  WWW-Authenticate challenge returned by https://api.yieldmo.com/dcs/mcp
+docs: null
+docs_note: >-
+  Yieldmo publishes no developer authentication page. The auth model below was read entirely off the
+  wire from the provider's own discovery documents — it is observed, not documented.
+
+summary:
+  types: [oauth2, openIdConnect]
+  api_key_in: []
+  oauth2_flows: [authorizationCode, implicit]
+  bearer_methods: [header]
+  identity_provider: Amazon Cognito
+  spec_declares_security: false
+
+schemes:
+  - name: mcp-oauth2
+    type: oauth2
+    protected_resource: https://api.yieldmo.com/dcs/mcp
+    issuer: https://api.yieldmo.com/dcs/mcp
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/authorize
+        tokenUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/token
+        refreshUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/token
+        scopes:
+          openid: OpenID Connect subject identifier
+          profile: Basic profile claims
+          email: Email address claim
+      - flow: implicit
+        authorizationUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/authorize
+        note: response_types_supported includes "token", so the implicit flow is advertised.
+    token_endpoint_auth_methods: [none, client_secret_basic, client_secret_post]
+    dynamic_client_registration:
+      supported: true
+      spec: RFC 7591
+      registration_endpoint: https://api.yieldmo.com/dcs/mcp/register
+      note: >-
+        The OpenAPI labels this handler "Fake Registration Mcp" (operationId
+        fake_registration_mcp_register_post), which suggests it satisfies MCP client-registration
+        expectations without provisioning a distinct Cognito app client. Behaviour unverified — the
+        endpoint returns 404 when called on the bare host path.
+    revocation_endpoint: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/revoke
+    end_session_endpoint: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/logout
+    userinfo_endpoint: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/userInfo
+    jwks_uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_vZfEMm5aZ/.well-known/jwks.json
+    id_token_signing_alg: [RS256]
+    subject_types: [public]
+    sources:
+      - well-known/yieldmo-oauth-authorization-server.json
+      - well-known/yieldmo-openid-configuration.json
+      - well-known/yieldmo-oauth-protected-resource.json
+
+  - name: mcp-openid-connect
+    type: openIdConnect
+    openIdConnectUrl: https://api.yieldmo.com/.well-known/openid-configuration
+    note: >-
+      The OIDC discovery document is served at the RFC 8414 path on the API host and is byte-identical
+      to the oauth-authorization-server document. It is not a fully conformant OIDC provider
+      configuration — issuer is https://api.yieldmo.com/dcs/mcp while every endpoint lives on the
+      Cognito domain, and required OIDC metadata such as claims_supported is absent.
+    sources: [well-known/yieldmo-openid-configuration.json]
+
+challenge:
+  observed_on: https://api.yieldmo.com/dcs/mcp
+  http_status: 401
+  www_authenticate: >-
+    Bearer error="invalid_token", error_description="Authentication required",
+    resource_metadata="https://api.yieldmo.com/.well-known/oauth-protected-resource/dcs/mcp"
+  note: >-
+    The resource_metadata URL advertised in the challenge (path-suffixed, per RFC 9728 §3) returns
+    404; the metadata is only retrievable at the unsuffixed /.well-known/oauth-protected-resource.
+    That is a real conformance defect an agent following the challenge would hit.
+
+other_surfaces:
+  - surface: Yieldmo JavaScript SDK (ads.yieldmo.com)
+    auth: none
+    note: >-
+      Publisher-side ad serving. Identity is the placement ID issued by Yieldmo account management;
+      there is no credential in the browser call path.
+    source: https://github.com/yieldmo/yieldmo-js-sdk/wiki/Single-page-apps
+  - surface: Prebid.js bid adapter (biddercode yieldmo)
+    auth: none
+    note: >-
+      Authorization is commercial, not technical — the placementId is provisioned by a Yieldmo
+      account manager. Prebid docs state "reach out to your Yieldmo account's person or
+      support@yieldmo.com" before the adapter can be used.
+    source: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - surface: YMax console (apps.yieldmo.com/auth)
+    auth: interactive login
+    note: Human sign-in for the Yieldmo platform; presumed to sit on the same Cognito pool, unverified.
+
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - {url: 'https://api.yieldmo.com/.well-known/oauth-authorization-server', status: 200}
+    - {url: 'https://api.yieldmo.com/.well-known/openid-configuration', status: 200}
+    - {url: 'https://api.yieldmo.com/.well-known/oauth-protected-resource', status: 200}
+    - {url: 'https://api.yieldmo.com/.well-known/oauth-protected-resource/dcs/mcp', status: 404}
+    - {url: 'https://api.yieldmo.com/dcs/mcp', status: 401}

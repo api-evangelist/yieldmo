@@ -1,0 +1,86 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  Live probes of Yieldmo hosts on 2026-08-12 plus openapi/yieldmo-dcs-mcp-openapi.json. Yieldmo
+  publishes no versioning policy, deprecation policy, SLA or changelog on any readable surface;
+  everything below is a recorded absence backed by the probes in x-evidence.
+
+versioning:
+  scheme: none
+  current: null
+  spec_version: '0.1.0'
+  spec_version_note: FastAPI's default info.version, not a published API version.
+  in_path: false
+  in_header: false
+  docs: null
+  finding: >-
+    The reporting API has no version identifier a client can pin to. A breaking change to a
+    canned-report response would be undetectable until it broke.
+
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  finding: No operation in the spec carries deprecated:true, and no deprecation or sunset policy is published.
+
+sla:
+  url: null
+  uptime_target: null
+  finding: No SLA published. Commercial terms are negotiated per partnership (see plans/yieldmo-plans-pricing.yml).
+
+status_page:
+  url: null
+  probed:
+    - {url: 'https://status.yieldmo.com', result: NXDOMAIN}
+    - {url: 'https://yieldmo.statuspage.io', result: 'HTTP 200 but redirects to atlassian.com/software/statuspage — Statuspage marketing page, zero occurrences of "yieldmo"; NOT a Yieldmo status page'}
+  health_endpoints:
+    - {url: 'https://api.yieldmo.com/ping', status: 200, body: Healthy Connection, note: unauthenticated liveness probe, not a status page}
+    - {path: /dcs/mcp/manage/health, note: declared in the spec as ping_dcs_mcp_manage_health_get}
+  finding: >-
+    Yieldmo operates no public status page. The apis.yml pointer previously asserting
+    type StatusPage at https://yieldmo.com pointed at the marketing homepage and has been removed
+    this round as false credit.
+
+changelog:
+  url: null
+  finding: >-
+    No dated changelog exists for any Yieldmo API surface. The only versioned history that IS public
+    is third-party: Prebid.js releases carry the yieldmoBidAdapter, and the yieldmo/maven-repository
+    GitHub repo carries 13 dated ymsdk Android releases (last 4.1.3). See packages/yieldmo-packages.yml.
+
+surface_maturity:
+  - surface: MCP server + DCS reporting API (api.yieldmo.com/dcs/mcp)
+    state: live-undocumented
+    note: >-
+      Live, OAuth-protected, machine-readable — and mentioned nowhere on Yieldmo's public surface.
+      No announcement, no docs page, no llms.txt. Discovered this round only by probing an
+      unadvertised host.
+  - surface: Prebid.js bid adapter (biddercode yieldmo)
+    state: actively-maintained
+    note: Shipped in Prebid.js; last Prebid.js release 11.29.0 on 2026-08-06. Both Prebid.js and Prebid Server adapters.
+  - surface: Yieldmo Synthetic Inventory Module
+    state: maintained
+    note: Published Prebid.js module.
+  - surface: Yieldmo JavaScript SDK
+    state: stale-but-in-use
+    note: >-
+      The documenting repo github.com/yieldmo/yieldmo-js-sdk was last pushed 2018-09-04; the wiki is
+      still the only published reference for window._ym.requestPageView. The SDK itself is served
+      from ads.yieldmo.com and is unversioned from a consumer's point of view.
+  - surface: Yieldmo Android SDK (ym:ymsdk)
+    state: abandoned
+    note: Last artifact ymsdk-4.1.3 in yieldmo/maven-repository; repo last pushed 2017-06-08.
+  - surface: Yieldmo iOS SDK (CocoaPods YieldmoSDK)
+    state: abandoned
+    note: Last version 4.2.5 published 2017-10-05; the Specs repo is archived.
+
+x-evidence:
+  fetched: '2026-08-12'
+  probes:
+    - {url: 'https://status.yieldmo.com', status: 0, note: DNS NXDOMAIN}
+    - {url: 'https://yieldmo.statuspage.io', status: 200, note: redirects to Atlassian Statuspage marketing}
+    - {url: 'https://api.yieldmo.com/ping', status: 200}
+    - {url: 'https://api.yieldmo.com/dcs/mcp/openapi.json', status: 200}
+    - {url: 'https://trunk.cocoapods.org/api/v1/pods/YieldmoSDK', status: 200}

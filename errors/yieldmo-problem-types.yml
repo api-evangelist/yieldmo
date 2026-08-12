@@ -1,0 +1,76 @@
+generated: '2026-08-12'
+method: derived
+source: openapi/yieldmo-dcs-mcp-openapi.json plus live responses observed on https://api.yieldmo.com
+format: fastapi-native
+format_note: >-
+  Not RFC 9457. No operation in the spec declares application/problem+json. Two distinct error
+  envelopes are in play on the same host — the FastAPI validation envelope and an OAuth-style
+  envelope on the 401 — and neither carries a stable machine-readable error code.
+
+envelopes:
+  - name: HTTPValidationError
+    media_type: application/json
+    schema: '#/components/schemas/HTTPValidationError'
+    shape: '{"detail": [{"loc": ["query", "campaign_ids"], "msg": "...", "type": "..."}]}'
+    fields:
+      - {name: detail, type: array, items: ValidationError}
+      - {name: 'detail[].loc', type: array, description: 'Location path of the offending input (e.g. ["query", "campaign_ids"]).'}
+      - {name: 'detail[].msg', type: string, description: Human-readable validation message.}
+      - {name: 'detail[].type', type: string, description: Machine-readable validation error type (Pydantic error code).}
+    source: openapi/yieldmo-dcs-mcp-openapi.json
+  - name: OAuthError
+    media_type: application/json
+    shape: '{"error": "invalid_token", "error_description": "Authentication required"}'
+    fields:
+      - {name: error, type: string, description: OAuth 2.0 error code (RFC 6750).}
+      - {name: error_description, type: string, description: Human-readable description.}
+    note: Observed live; NOT declared in the OpenAPI. An agent reading only the spec will not know this envelope exists.
+    source: 'live 401 from https://api.yieldmo.com/dcs/mcp'
+
+problems:
+  - status: 422
+    name: Validation Error
+    envelope: HTTPValidationError
+    title: Unprocessable Entity
+    description: >-
+      Returned when a query parameter is missing, malformed, or fails type coercion — e.g. a missing
+      required campaign_ids array, a non-integer start_date_key, or a start_time that is not a valid
+      YYYY-MM-DD date.
+    remediation: >-
+      Read detail[].loc to find the offending parameter and detail[].type for the Pydantic error
+      class, then correct the input. Date keys are integers in YYYYMMDD form (default 19000101);
+      advertiser_data uses YYYY-MM-DD strings instead, and start_time must be strictly before end_time.
+    declared_on: all 18 parameterised canned-report operations
+    source_operations:
+      - openapi/yieldmo-dcs-mcp-openapi.json#campaign_id_from_name_canned_reports_campaign_id_from_name_get
+      - openapi/yieldmo-dcs-mcp-openapi.json#campaign_performance_canned_reports_campaign_performance_get
+      - openapi/yieldmo-dcs-mcp-openapi.json#advertiser_data_canned_reports_advertiser_data_get
+  - status: 401
+    name: Authentication required
+    envelope: OAuthError
+    title: invalid_token
+    description: Returned by the MCP endpoint (and by extension the reporting operations behind it) when no valid Cognito-issued Bearer token is presented.
+    remediation: >-
+      Complete the OAuth 2.0 authorization-code flow against
+      https://yieldmo-cuba.auth.us-east-1.amazoncognito.com and present the token as
+      "Authorization: Bearer <token>". The WWW-Authenticate header points at a resource_metadata URL
+      that 404s; use https://api.yieldmo.com/.well-known/oauth-protected-resource instead.
+    declared_in_spec: false
+    observed: '2026-08-12'
+  - status: 404
+    name: Not Found
+    envelope: 'API Gateway default: {"message": "Not Found"}'
+    title: Not Found
+    description: >-
+      Returned by the AWS API Gateway fronting api.yieldmo.com for any unrouted path. A third,
+      undeclared envelope shape — clients see {"message": "..."} rather than either envelope above.
+    declared_in_spec: false
+    observed: '2026-08-12'
+
+gaps:
+  - No error code registry, decline-code table, or documented error reference exists on any Yieldmo surface.
+  - Only 422 is declared in the spec; the 401 and 404 an agent will actually hit first are not.
+  - No Retry-After, no rate-limit error, and no 5xx response is declared on any operation.
+  - Three different error envelopes are served from one host with no documented discriminator.
+
+problem_count: 3

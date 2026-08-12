@@ -1,0 +1,53 @@
+generated: '2026-08-12'
+method: generated
+source: >-
+  Generated from openapi/yieldmo-dcs-mcp-openapi.json (harvested verbatim from
+  https://api.yieldmo.com/dcs/mcp/openapi.json on 2026-08-12), plus conventions/, errors/,
+  authentication/ and scopes/ in this repo. Every operationId referenced by every skill was verified
+  against the spec. Yieldmo publishes no AGENTS.md or skill files of its own.
+api: openapi/yieldmo-dcs-mcp-openapi.json
+base_url: https://api.yieldmo.com/dcs/mcp
+auth_note: >-
+  All three skills require an OAuth 2.0 Bearer token from the Yieldmo Cognito pool. The API is
+  entirely read-only — there is no write operation on the published surface, so no skill can change
+  campaign state.
+skills:
+  - file: yieldmo-campaign-performance-review.md
+    name: Review Yieldmo campaign performance
+    description: Resolve a campaign by name, pull headline performance, daily spend and KPI trend, and break out by creative.
+    api: openapi/yieldmo-dcs-mcp-openapi.json
+    operations:
+      - campaign_id_from_name_canned_reports_campaign_id_from_name_get
+      - child_campaign_ids_from_parent_name_canned_reports_child_campaign_ids_from_parent_name_get
+      - campaign_summary_canned_reports_campaign_summary_get
+      - campaign_performance_canned_reports_campaign_performance_get
+      - campaign_daily_spend_canned_reports_campaign_daily_spend_get
+      - campaign_daily_performance_canned_reports_campaign_daily_performance_get
+      - campaign_metrics_canned_reports_campaign_metrics_get
+      - campaign_creative_performance_canned_reports_campaign_creative_performance_get
+  - file: yieldmo-inventory-quality-audit.md
+    name: Audit Yieldmo inventory quality by URL
+    description: Find where impressions landed — best/worst URLs, biddable-object and segment breakdowns, device and browser cross-cuts.
+    api: openapi/yieldmo-dcs-mcp-openapi.json
+    operations:
+      - campaign_id_from_name_canned_reports_campaign_id_from_name_get
+      - web_campaign_check_canned_reports_web_campaign_check_get
+      - top_urls_by_campaign_canned_reports_top_urls_by_campaign_get
+      - top_bottom_urls_canned_reports_top_bottom_urls_get
+      - campaign_biddable_object_url_performance_canned_reports_campaign_biddable_object_url_performance_get
+      - campaign_feature_list_kpi_canned_reports_campaign_feature_list_kpi_get
+  - file: yieldmo-audience-and-attribution.md
+    name: Profile a Yieldmo audience and pull attribution
+    description: Demographic composition, segments and browser topics for a campaign, then the advertiser's retargeting and attributed-conversion rows.
+    api: openapi/yieldmo-dcs-mcp-openapi.json
+    operations:
+      - campaign_summary_canned_reports_campaign_summary_get
+      - campaign_segment_demographic_canned_reports_campaign_segment_demographic_get
+      - segment_description_canned_reports_segment_description_get
+      - topic_id_canned_reports_topic_id_get
+      - conversion_types_canned_reports_conversion_types_get
+      - advertiser_data_canned_reports_advertiser_data_get
+coverage:
+  operations_in_spec: 19
+  operations_covered: 19
+  skills: 3

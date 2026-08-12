@@ -16,7 +16,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/yieldmo.png
 url: https://raw.githubusercontent.com/api-evangelist/yieldmo/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-12'
 specificationVersion: '0.19'
 tags:
   - Advertising
@@ -29,6 +29,11 @@ tags:
   - Ad Formats
   - Supply-Side Platform
   - SSP
+  - Campaign Reporting
+  - Attention Analytics
+  - MCP
+  - Prebid
+  - AdTech
 apis:
   - name: Yieldmo JavaScript SDK API
     description: JavaScript SDK providing publisher-side API methods for managing ad placements and requesting page views in single-page applications and infinite scroll implementations. Enables dynamic ad loading without full page refreshes using placement IDs obtained from Yieldmo account management.
@@ -85,10 +90,10 @@ apis:
       - FN: Yieldmo Support
         email: support@yieldmo.com
   - name: Yieldmo YMax Platform API
-    description: Proprietary programmatic exchange and creative intelligence platform offering curated inventory access, contextual targeting, attention analytics, and deal management for advertisers and demand-side partners. Integrates with all major DSPs and supports PMP deal setup via The Trade Desk Easy Proposal API workflow.
+    description: Proprietary programmatic exchange and creative intelligence platform offering curated inventory access, contextual targeting, attention analytics, and deal management for advertisers and demand-side partners. Integrates with all major DSPs and supports PMP deal setup via The Trade Desk Easy Proposal API workflow. Transactions land on the Yieldmo exchange at ads.yieldmo.com, whose /exchange/prebid and /exchange/prebidvideo paths are published in the open-source Yieldmo Prebid bid adapter.
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://yieldmo.com/technology/
-    baseURL: https://yieldmo.com
+    baseURL: https://ads.yieldmo.com
     tags:
       - Exchange
       - Programmatic
@@ -102,6 +107,32 @@ apis:
     contact:
       - FN: Yieldmo Sales
         email: info@yieldmo.com
+  - name: Yieldmo DCS Reporting API
+    description: OAuth-protected campaign reporting and analytics API over Yieldmo YMax exchange data, served as both a Model Context Protocol server and a REST API by one application at api.yieldmo.com/dcs/mcp. Nineteen read-only operations cover campaign resolution, headline and daily performance, spend, creative-level results, top and bottom performing URLs, biddable-object and segment breakdowns, audience demographics with Experian index scores, browser topics, conversion types, and advertiser retargeting and attribution. Discovered by probing on 2026-08-12; the surface is live and machine-readable but undocumented on Yieldmo's public site.
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+    humanURL: https://api.yieldmo.com/dcs/mcp/openapi.json
+    baseURL: https://api.yieldmo.com/dcs/mcp
+    tags:
+      - Reporting
+      - Analytics
+      - MCP
+      - Campaign Performance
+      - Attention Analytics
+      - OpenAPI
+    properties:
+      - type: OpenAPI
+        url: openapi/yieldmo-dcs-mcp-openapi.json
+      - type: MCPServer
+        url: mcp/yieldmo-mcp.yml
+      - type: ToolCrosswalk
+        url: mcp/yieldmo-tool-crosswalk.yml
+      - type: Overlay
+        url: overlays/yieldmo-dcs-mcp-overlay.yaml
+      - type: Authentication
+        url: authentication/yieldmo-authentication.yml
+    contact:
+      - FN: Yieldmo Support
+        email: support@yieldmo.com
 common:
   - type: DomainSecurity
     url: security/yieldmo-domain-security.yml
@@ -109,7 +140,7 @@ common:
     url: https://yieldmo.com
   - type: Documentation
     url: https://github.com/yieldmo/yieldmo-js-sdk/wiki
-  - type: GitHubOrg
+  - type: GitHubOrganization
     url: https://github.com/yieldmo
   - type: LinkedIn
     url: https://www.linkedin.com/company/yieldmo
@@ -117,16 +148,74 @@ common:
     url: https://yieldmo.com/category/blog/
   - type: Pricing
     url: https://yieldmo.com/solutions/
-  - type: StatusPage
-    url: https://yieldmo.com
   - type: X
     url: https://x.com/yieldmo
+  - type: Login
+    url: https://apps.yieldmo.com/auth
+  - type: PrivacyPolicy
+    url: https://yieldmo.com/privacy-policy/
   - type: Plans
     url: plans/yieldmo-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/yieldmo-rate-limits.yml
   - type: FinOps
     url: finops/yieldmo-finops.yml
+  - type: MCPServer
+    url: mcp/yieldmo-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: WellKnown
+    url: well-known/yieldmo-well-known.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
+  - type: OAuthScopes
+    url: scopes/yieldmo-scopes.yml
+  - type: Conventions
+    url: conventions/yieldmo-conventions.yml
+  - type: ErrorCatalog
+    url: errors/yieldmo-problem-types.yml
+  - type: DataModel
+    url: data-model/yieldmo-data-model.yml
+  - type: Conformance
+    url: conformance/yieldmo-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/yieldmo-lifecycle.yml
+  - type: Packages
+    url: packages/yieldmo-packages.yml
+  - type: SDKs
+    url: packages/yieldmo-packages.yml
+  - type: Sandbox
+    url: sandbox/yieldmo-sandbox.yml
+  - type: Components
+    url: components/yieldmo-components.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/yieldmo-llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-12'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: contract-discovered
+  detail: >-
+    STEP 0b contract discovery beat the wall: yieldmo.com and www.yieldmo.com answer every path —
+    including / — with an HTTP 202 Section.io sgcaptcha robot-challenge shell, so the marketing and
+    policy surface is unreadable, but the real machine-readable contract is live on an unadvertised
+    host at https://api.yieldmo.com/dcs/mcp/openapi.json (OpenAPI 3.1.0, 19 operations) alongside an
+    OAuth-protected MCP server and RFC 8414 / RFC 9728 / OIDC discovery documents.
+  evidence:
+    - url: https://api.yieldmo.com/dcs/mcp/openapi.json
+      status: 200
+    - url: https://api.yieldmo.com/.well-known/oauth-protected-resource
+      status: 200
+    - url: https://api.yieldmo.com/dcs/mcp
+      status: 401
+    - url: https://yieldmo.com/
+      status: 202
+  checked: '2026-08-12'

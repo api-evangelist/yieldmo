@@ -1,0 +1,1 @@
+{"resource":"https://api.yieldmo.com/dcs/mcp","authorization_servers":["https://api.yieldmo.com/dcs/mcp"],"bearer_methods_supported":["header"],"scopes_supported":["openid"]}

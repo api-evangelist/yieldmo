@@ -1,0 +1,121 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Yieldmo DCS reporting API
+  version: 1.0.0
+extends: openapi/yieldmo-dcs-mcp-openapi.json
+x-generated: '2026-08-12'
+x-method: generated
+x-source: >-
+  Generated from openapi/yieldmo-dcs-mcp-openapi.json (harvested verbatim from
+  https://api.yieldmo.com/dcs/mcp/openapi.json on 2026-08-12) plus the /.well-known/ OAuth discovery
+  documents in well-known/. Every value asserted here is either observed on the wire or quoted from
+  the spec's own prose descriptions — no capability is invented. The original spec is never mutated.
+actions:
+  # --- Identity the harvested spec does not carry (info.title is the FastAPI default) ---
+  - target: $.info
+    update:
+      title: Yieldmo DCS Reporting API
+      description: >-
+        Read-only campaign reporting and analytics over Yieldmo YMax exchange data, served as both an
+        MCP server and a REST API by one application at https://api.yieldmo.com/dcs/mcp. Titled and
+        described by API Evangelist; the published document carries only the FastAPI default title.
+      x-apievangelist-profile: https://apis.io/provider/yieldmo
+      x-apievangelist-note: >-
+        Live and OAuth-protected, but undocumented on Yieldmo's public surface — no reference page,
+        no announcement, no llms.txt, and the host is not linked from anywhere public.
+
+  # --- Absolute server: the published servers[] is the relative path "/dcs/mcp" with no host ---
+  - target: $.servers
+    update:
+      - url: https://api.yieldmo.com/dcs/mcp
+        description: >-
+          Production. Resolved by API Evangelist from the RFC 9728 protected-resource document at
+          https://api.yieldmo.com/.well-known/oauth-protected-resource, which names this exact
+          resource URL. The published spec gives only the relative path, so a client cannot resolve
+          a base URL from the contract alone.
+
+  # --- The API is fully authenticated but declares no securitySchemes ---
+  - target: $.components
+    update:
+      securitySchemes:
+        mcpOAuth2:
+          type: oauth2
+          description: >-
+            Added by API Evangelist from Yieldmo's own published discovery documents
+            (/.well-known/oauth-authorization-server, /.well-known/openid-configuration). The
+            published spec declares no securitySchemes despite every operation returning 401
+            without a Bearer token.
+          flows:
+            authorizationCode:
+              authorizationUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/authorize
+              tokenUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/token
+              refreshUrl: https://yieldmo-cuba.auth.us-east-1.amazoncognito.com/oauth2/token
+              scopes:
+                openid: OpenID Connect subject identifier
+                profile: Basic profile claims
+                email: Email address claim
+
+  # --- Group the untagged operations so the spec can be split and browsed ---
+  - target: $.paths[?(@property.startsWith('/canned-reports'))].get
+    update:
+      tags:
+        - canned-reports
+      x-apievangelist-tag-source: >-
+        Added by API Evangelist. No operation in the published spec carries a tag, so the document
+        cannot be grouped, split by resource, or rendered with sections.
+
+  # --- Constrain the KPI vocabulary the spec enumerates in prose but types as a bare string ---
+  - target: $.paths[?(@property.startsWith('/canned-reports'))].get.parameters[?(@.name=='kpi')].schema
+    update:
+      enum:
+        - ctr
+        - attn
+        - mrc
+        - mrc_cpm_non_video
+        - vcr_imps
+        - vcr_play
+        - play_rate
+        - cpm
+        - cpm_non_video
+        - cpm_video
+        - cpc
+        - cpcv
+        - groupm
+        - groupm_viewability
+      x-apievangelist-enum-source: >-
+        Values transcribed verbatim from the "kpi options:" line in the operations' own descriptions.
+        The published schema types kpi as an unconstrained string, so a client gets no validation.
+
+  # --- Surface the undeclared error responses a caller actually hits first ---
+  - target: $.paths[?(@property.startsWith('/canned-reports'))].get.responses
+    update:
+      '401':
+        description: >-
+          Authentication required. Observed live; NOT declared in the published spec. Body is
+          {"error": "invalid_token", "error_description": "Authentication required"} with a
+          WWW-Authenticate Bearer challenge. Added by API Evangelist.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error: {type: string}
+                error_description: {type: string}
+
+  # --- Record the API Evangelist assessment on the document root ---
+  - target: $.info
+    update:
+      x-apievangelist-gaps:
+        - No securitySchemes declared despite full OAuth enforcement.
+        - No tags on any operation.
+        - No response schemas — every 200 is an untyped object.
+        - No examples anywhere in the document.
+        - operationIds are FastAPI auto-generated and path-coupled.
+        - No 401, 404, 429 or 5xx responses declared; only 422.
+        - No pagination beyond a limit cap; no cursor, offset or total count.
+        - Two incompatible date encodings (integer YYYYMMDD keys, and YYYY-MM-DD strings on advertiser-data).
+      x-apievangelist-strengths:
+        - OpenAPI 3.1.0, anonymously retrievable.
+        - Every operation carries a real prose description.
+        - RFC 8414, RFC 9728 and RFC 7591 discovery documents all served and anonymous.
+        - Read-only surface — no write operations, so no idempotency exposure.

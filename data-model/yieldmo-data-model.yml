@@ -1,0 +1,119 @@
+generated: '2026-08-12'
+method: derived
+source: >-
+  Derived from the operation paths, parameter names and prose descriptions in
+  openapi/yieldmo-dcs-mcp-openapi.json. The spec declares only two component schemas
+  (HTTPValidationError, ValidationError) and no response schemas at all, so no $ref graph exists —
+  the entity graph below is reconstructed from identifier parameters and from the Snowflake table
+  names Yieldmo names in its own operation descriptions (db_prd.ods.conversion_type, ods.retargeting,
+  ods.attributed_conversion).
+caveat: >-
+  Because there are no response schemas, field-level structure is NOT knowable from the contract.
+  Entities and relationships below are asserted only where an identifier parameter or an explicit
+  description sentence supports them.
+
+entities:
+  - name: Campaign
+    id_field: campaign_id
+    id_type: string
+    alt_lookup: campaign_name
+    description: A YMax campaign. The central entity — 17 of the 19 operations take campaign_ids.
+    known_attributes:
+      - {name: campaign_id, source: 'campaign-summary, campaign-id-from-name'}
+      - {name: campaign_name, source: campaign-name-from-id}
+      - {name: advertiser_id, source: 'campaign-summary description'}
+      - {name: advertiser_name, source: 'campaign-summary description'}
+    operations:
+      - campaign_id_from_name_canned_reports_campaign_id_from_name_get
+      - campaign_name_from_id_canned_reports_campaign_name_from_id_get
+      - campaign_summary_canned_reports_campaign_summary_get
+      - campaign_performance_canned_reports_campaign_performance_get
+  - name: ParentCampaign
+    id_field: parent_campaign_id
+    alt_lookup: parent_campaign_name
+    description: A parent YMax campaign that owns child campaigns. Returned alongside parent_campaign_name and campaign_id.
+    operations: [child_campaign_ids_from_parent_name_canned_reports_child_campaign_ids_from_parent_name_get]
+  - name: Advertiser
+    id_field: advertiser_id
+    id_type: integer
+    id_note: Described in the spec as "Snowflake advertiser ID" — an internal warehouse key, not a public identifier.
+    description: The buying entity a campaign belongs to.
+    operations:
+      - advertiser_data_canned_reports_advertiser_data_get
+      - campaign_summary_canned_reports_campaign_summary_get
+  - name: Creative
+    id_field: adbuilder_creative_id
+    description: >-
+      A creative execution. Null for programmatic campaigns where the DSP hosts the creative — the
+      one explicitly documented nullability rule in the whole spec.
+    known_attributes: [adbuilder_creative_id, format, impressions, clicks, mrc_viewable_impressions, video_starts, video_completions, vcr, spend]
+    operations: [campaign_creative_performance_canned_reports_campaign_creative_performance_get]
+  - name: Segment
+    id_field: segment_id
+    id_type: string
+    description: An audience segment, with a lookup for its human description and demographic composition indexed against Experian.
+    operations:
+      - segment_description_canned_reports_segment_description_get
+      - campaign_segment_demographic_canned_reports_campaign_segment_demographic_get
+      - campaign_biddable_object_url_performance_canned_reports_campaign_biddable_object_url_performance_get
+  - name: BiddableObject
+    id_field: null
+    description: Yieldmo's unit of biddable inventory, reported jointly with segment and URL.
+    operations: [campaign_biddable_object_url_performance_canned_reports_campaign_biddable_object_url_performance_get]
+  - name: URL
+    id_field: url
+    description: A page URL on which impressions were delivered; the unit of inventory quality reporting.
+    operations:
+      - top_urls_by_campaign_canned_reports_top_urls_by_campaign_get
+      - top_bottom_urls_canned_reports_top_bottom_urls_get
+      - web_campaign_check_canned_reports_web_campaign_check_get
+  - name: Topic
+    id_field: topic_id
+    description: A browser Topics API topic, reported as the top 10 by campaign impressions with audience index scores.
+    operations: [topic_id_canned_reports_topic_id_get]
+  - name: Feature
+    id_field: feature_list
+    description: A dimension for slicing KPI and impressions — device_type, browser, os and similar.
+    operations: [campaign_feature_list_kpi_canned_reports_campaign_feature_list_kpi_get]
+  - name: ConversionType
+    id_field: null
+    warehouse_table: db_prd.ods.conversion_type
+    description: Reference list of conversion types; the only operation with no parameters.
+    operations: [conversion_types_canned_reports_conversion_types_get]
+  - name: Retargeting
+    warehouse_table: ods.retargeting
+    description: Retargeting rows for an advertiser, returned in dated and all-time variants.
+    operations: [advertiser_data_canned_reports_advertiser_data_get]
+  - name: AttributedConversion
+    warehouse_table: ods.attributed_conversion
+    description: Attributed conversion rows for an advertiser.
+    operations: [advertiser_data_canned_reports_advertiser_data_get]
+
+relationships:
+  - {from: Campaign, to: ParentCampaign, kind: belongs_to, via: parent_campaign_id, evidence: child-campaign-ids-from-parent-name returns parent_campaign_id and campaign_id per child}
+  - {from: ParentCampaign, to: Campaign, kind: has_many, via: campaign_id}
+  - {from: Campaign, to: Advertiser, kind: belongs_to, via: advertiser_id, evidence: campaign-summary returns advertiser ID and advertiser name}
+  - {from: Advertiser, to: Campaign, kind: has_many, via: advertiser_id}
+  - {from: Campaign, to: Creative, kind: has_many, via: adbuilder_creative_id, evidence: campaign-creative-performance is keyed by campaign_ids}
+  - {from: Campaign, to: Segment, kind: has_many, via: segment_id, evidence: campaign-segment-demographic and campaign-biddable-object-url-performance}
+  - {from: Campaign, to: URL, kind: has_many, via: url, evidence: top-urls-by-campaign, top-bottom-urls}
+  - {from: Campaign, to: Topic, kind: has_many, via: topic_id, evidence: topic-id returns top 10 topics by campaign impressions}
+  - {from: BiddableObject, to: Segment, kind: has_one, via: segment_id}
+  - {from: BiddableObject, to: URL, kind: has_one, via: url}
+  - {from: Advertiser, to: Retargeting, kind: has_many, via: advertiser_id}
+  - {from: Advertiser, to: AttributedConversion, kind: has_many, via: advertiser_id}
+
+metrics_vocabulary:
+  description: The measure set these entities are reported on, enumerated in the operation descriptions.
+  values: [impressions, clicks, ctr, spend, win_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play, play_rate, groupm, groupm_viewability, cost_per_action]
+  proprietary: [attn, groupm, groupm_viewability]
+
+external_data_sources:
+  - {name: Experian, used_for: demographic index scores, operation: campaign_segment_demographic_canned_reports_campaign_segment_demographic_get}
+  - {name: Browser Topics API, used_for: topic-level audience indexing, operation: topic_id_canned_reports_topic_id_get}
+  - {name: GroupM viewability, used_for: KPI option, operation: multiple}
+  - {name: MRC viewability standard, used_for: viewable impression counting, operation: campaign_creative_performance_canned_reports_campaign_creative_performance_get}
+
+entity_count: 12
+relationship_count: 12
+render: null

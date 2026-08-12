@@ -1,3 +1,17 @@
+generated: '2026-08-12'
+method: derived
+source: >-
+  Derived from Yieldmo's public marketing pages (https://yieldmo.com/solutions/,
+  https://yieldmo.com/technology/, https://yieldmo.com/request-a-demo/) as captured in an earlier
+  pass. Not re-verified this round: yieldmo.com now answers every request with an HTTP 202
+  Section.io robot-challenge shell, so the pricing surface was not machine-readable on 2026-08-12.
+pricing_published: false
+plan_count: 3
+plan_count_note: >-
+  Yieldmo publishes NO priced tiers, no self-serve signup, and no public rate card. The three
+  "plans" below are commercial engagement models inferred from the solutions and technology pages,
+  not published price points — every one of them resolves to "contact account management".
+machine_readable_pricing: false
 name: Yieldmo Plans and Pricing
 description: Yieldmo operates as an enterprise programmatic advertising marketplace. Pricing is negotiated directly through account management rather than published self-serve tiers. Publishers access the platform through managed partnerships, and advertisers engage via programmatic deals through DSP integrations or direct PMP arrangements.
 url: https://yieldmo.com/solutions/

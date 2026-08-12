@@ -1,0 +1,154 @@
+generated: '2026-08-12'
+method: derived
+source: >-
+  Derived by aligning the MCP server at https://api.yieldmo.com/dcs/mcp with the OpenAPI 3.1.0 the
+  same application co-serves at /dcs/mcp/openapi.json (captured verbatim at
+  openapi/yieldmo-dcs-mcp-openapi.json).
+purpose: >-
+  Bind each agent-facing tool to the REST operation that backs it so the tool inherits a REAL
+  inputSchema — the operation's parameters block — instead of a guessed one. Yieldmo is an unusual
+  case: the MCP server and the REST API are the SAME FastAPI application, so the two surfaces are
+  1:1 rather than the usual overlapping-but-divergent projections.
+
+surfaces:
+  rest_openapi: openapi/yieldmo-dcs-mcp-openapi.json    # 27 paths, 19 business operations, OpenAPI 3.1.0, anonymous 200
+  mcp: https://api.yieldmo.com/dcs/mcp                   # tools/list GATED (401 invalid_token, OAuth/Cognito)
+  graphql: null                                          # none found on any Yieldmo host
+  console: https://apps.yieldmo.com                      # YMax web console (Next.js), no public API surface
+
+confidence_basis: >-
+  The live MCP tools/list is OAuth-gated, so tool NAMES were not observed. Every row below is
+  therefore mapped by the FastAPI convention that the MCP tool name is the operation's function name
+  (the operationId prefix before the path suffix). The OPERATIONS are real and verbatim; the tool
+  names are inferred. Confidence is set to medium throughout for exactly that reason — no row is
+  claimed as high, because no row was observed on the wire.
+
+crosswalk:
+  - tool: campaign_id_from_name
+    category: lookup
+    rest: [campaign_id_from_name_canned_reports_campaign_id_from_name_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_name_from_id
+    category: lookup
+    rest: [campaign_name_from_id_canned_reports_campaign_name_from_id_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_summary
+    category: lookup
+    rest: [campaign_summary_canned_reports_campaign_summary_get]
+    binding: rest
+    confidence: medium
+  - tool: child_campaign_ids_from_parent_name
+    category: lookup
+    rest: [child_campaign_ids_from_parent_name_canned_reports_child_campaign_ids_from_parent_name_get]
+    binding: rest
+    confidence: medium
+    note: Accepts parent campaign names OR ids on one parameter; the spec models it as anyOf array/null.
+  - tool: campaign_performance
+    category: performance
+    rest: [campaign_performance_canned_reports_campaign_performance_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_daily_spend
+    category: spend
+    rest: [campaign_daily_spend_canned_reports_campaign_daily_spend_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_daily_performance
+    category: performance
+    rest: [campaign_daily_performance_canned_reports_campaign_daily_performance_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_metrics
+    category: performance
+    rest: [campaign_metrics_canned_reports_campaign_metrics_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_creative_performance
+    category: creative
+    rest: [campaign_creative_performance_canned_reports_campaign_creative_performance_get]
+    binding: rest
+    confidence: medium
+  - tool: top_urls_by_campaign
+    category: inventory
+    rest: [top_urls_by_campaign_canned_reports_top_urls_by_campaign_get]
+    binding: rest
+    confidence: medium
+  - tool: top_bottom_urls
+    category: inventory
+    rest: [top_bottom_urls_canned_reports_top_bottom_urls_get]
+    binding: rest
+    confidence: medium
+    note: Superset of top_urls_by_campaign — adds sort direction and metric selection.
+  - tool: campaign_biddable_object_url_performance
+    category: inventory
+    rest: [campaign_biddable_object_url_performance_canned_reports_campaign_biddable_object_url_performance_get]
+    binding: rest
+    confidence: medium
+  - tool: web_campaign_check
+    category: diagnostics
+    rest: [web_campaign_check_canned_reports_web_campaign_check_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_segment_demographic
+    category: audience
+    rest: [campaign_segment_demographic_canned_reports_campaign_segment_demographic_get]
+    binding: rest
+    confidence: medium
+  - tool: segment_description
+    category: audience
+    rest: [segment_description_canned_reports_segment_description_get]
+    binding: rest
+    confidence: medium
+  - tool: topic_id
+    category: audience
+    rest: [topic_id_canned_reports_topic_id_get]
+    binding: rest
+    confidence: medium
+  - tool: campaign_feature_list_kpi
+    category: performance
+    rest: [campaign_feature_list_kpi_canned_reports_campaign_feature_list_kpi_get]
+    binding: rest
+    confidence: medium
+  - tool: conversion_types
+    category: reference
+    rest: [conversion_types_canned_reports_conversion_types_get]
+    binding: rest
+    confidence: medium
+  - tool: advertiser_data
+    category: attribution
+    rest: [advertiser_data_canned_reports_advertiser_data_get]
+    binding: rest
+    confidence: medium
+    note: Composite — returns retargeting_dated, retargeting_all and attributed_conversions in one payload.
+
+mcp_only: []                     # none identifiable; the MCP app IS the REST app
+
+rest_only:
+  - group: oauth-discovery
+    operations:
+      - oauth_authorization_server_metadata__well_known_openid_configuration_get
+      - oauth_authorization_server_metadata__well_known_oauth_authorization_server_get
+      - oauth_protected_resource_metadata__well_known_oauth_protected_resource_suffix__get
+    reason: RFC 8414 / RFC 9728 / OIDC discovery documents — transport plumbing, not agent tools.
+  - group: registration
+    operations: [fake_registration_mcp_register_post]
+    reason: RFC 7591 dynamic client registration endpoint used during the OAuth handshake.
+  - group: health
+    operations:
+      - ping_dcs_mcp_manage_health_get
+      - ping_mcp_manage_health_get
+      - ping_manage_health_get
+      - ping_ping_get
+    reason: Liveness probes; four aliases of the same handler.
+
+coverage:
+  tools_named: 19
+  tools_bound: 19
+  mcp_only: 0
+  rest_operations_total: 27
+  rest_operations_business: 19
+  rest_operations_with_tool: 19
+  rest_operations_infrastructure: 8
+  observed_from_live_tools_list: 0

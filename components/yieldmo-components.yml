@@ -1,0 +1,89 @@
+generated: '2026-08-12'
+method: searched
+source: >-
+  https://github.com/yieldmo/yieldmo-js-sdk/wiki (Home, Single-page-apps),
+  https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html, and the adapter
+  source at https://raw.githubusercontent.com/prebid/Prebid.js/master/modules/yieldmoBidAdapter.js —
+  all read on 2026-08-12.
+scope_note: >-
+  Yieldmo ships no dashboard widgets or embedded analytics. Its client-side surface is ad-delivery
+  components: a loader SDK that injects placements into a publisher's page, a Prebid module that
+  creates those placements automatically, and a hosted outstream video player. These are genuine
+  embeddable client-side components, and they are distinct from the server-side surface in
+  packages/yieldmo-packages.yml.
+
+families:
+  - family: Ad placement SDK
+    description: >-
+      The Yieldmo JavaScript SDK, loaded as a publisher tag from ads.yieldmo.com. It renders ads into
+      div containers ("placements") on the page and exposes one public method on the global object.
+    loader:
+      global: window._ym
+      host: https://ads.yieldmo.com
+      versioned: false
+      version_note: The loader URL is unpinned; a publisher cannot tell which build is running.
+    components:
+      - name: Placement container
+        type: div-injected ad unit
+        identifier: placementId (issued by Yieldmo account management)
+        description: A code-on-page div that the SDK fills with a Yieldmo ad. Meant to be used once per hard page refresh in a standard implementation.
+        docs: https://github.com/yieldmo/yieldmo-js-sdk/wiki/Simple-page
+    api:
+      - signature: "window._ym.requestPageView(['<placementId>', '<placementId>'])"
+        description: >-
+          Requests new ads for placements already on the page. The supported route for single-page
+          apps and infinite scroll, where there is no hard refresh to trigger a new pageview.
+        docs: https://github.com/yieldmo/yieldmo-js-sdk/wiki/Single-page-apps
+        constraints:
+          - Each call generates a brand-new pageview; call it only on real virtual navigations.
+          - Leave the window._ym object unaltered — removing or modifying it breaks the method and causes undefined behaviour.
+          - Verify by watching for network requests to the ads.yieldmo.com endpoint.
+    integration_targets:
+      - {name: Google Ad Manager (DFP), docs: 'https://github.com/yieldmo/yieldmo-js-sdk/wiki/DFP-support'}
+      - {name: AMP, docs: 'https://github.com/yieldmo/yieldmo-js-sdk/wiki/AMP-support'}
+      - {name: DFP in AMP, docs: 'https://github.com/yieldmo/yieldmo-js-sdk/wiki/DFP-in-AMP-support'}
+      - {name: DFP + MRAID, docs: 'https://github.com/yieldmo/yieldmo-js-sdk/wiki/Integrating-with-DFP-and-MRAID'}
+      - {name: Click tracker macros, docs: 'https://github.com/yieldmo/yieldmo-js-sdk/wiki/Click-Tracker-Macros'}
+    maintenance_note: >-
+      The documenting repo github.com/yieldmo/yieldmo-js-sdk was last pushed 2018-09-04 and contains
+      only a wiki. The wiki is nonetheless the sole published reference for this API.
+
+  - family: Prebid.js synthetic inventory
+    description: >-
+      A Prebid.js module that creates a Yieldmo placement on the page and injects the Yieldmo SDK
+      into it, so a publisher gets Synthetic Outstream inventory without hand-placing a container.
+    module_code: yieldmoSyntheticInventoryModule
+    build: gulp build --modules=yieldmoSyntheticInventoryModule,...
+    configuration: |
+      pbjs.que.push(function() {
+        pbjs.setConfig({
+          yieldmo_synthetic_inventory: {
+            placementId: '1234567890',
+            adUnitPath: '/1234567/ad_unit_name_used_in_gam'
+          }
+        });
+      });
+    parameters:
+      - {name: placementId, scope: required, type: string, description: Yieldmo placement ID, issued by the Yieldmo account manager.}
+      - {name: adUnitPath, scope: required, type: string, description: 'Google Ad Manager ad unit path, form /network-code/[parent-ad-unit-code/...]ad-unit-code.'}
+    docs: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
+
+  - family: Outstream video player
+    description: Hosted renderer bundle the Prebid adapter loads to play outstream video creatives in-page.
+    components:
+      - name: Prebid outstream player
+        url: https://prebid-outstream.yieldmo.com/bundle.js
+        versioned: false
+        version_note: Unpinned CDN bundle; the constant OUTSTREAM_VIDEO_PLAYER_URL in the adapter has no version segment.
+        timeout: 15000 ms (VAST_TIMEOUT in the adapter)
+    source: https://raw.githubusercontent.com/prebid/Prebid.js/master/modules/yieldmoBidAdapter.js
+
+  - family: Creative format gallery
+    description: >-
+      Public, live gallery of Yieldmo's 20+ proprietary ad formats with working demos — the AdBuilder
+      output surface. Not an embeddable component itself, but the reference a publisher or buyer uses
+      to choose one.
+    url: https://formats.yieldmo.com/
+    status: HTTP 200 as of 2026-08-12
+
+family_count: 4
