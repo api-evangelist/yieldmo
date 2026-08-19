@@ -1,0 +1,3715 @@
+{
+  "item": [
+    {
+      "id": "24f264aa-1a58-4c94-b95c-4e4cff6fe279",
+      "name": "Campaign Id From Name",
+      "request": {
+        "name": "Campaign Id From Name",
+        "description": {
+          "content": "Look up campaign IDs from campaign names.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-id-from-name"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_names",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_names",
+              "value": "<string>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "2defce49-1f88-4597-9482-495ca520138e",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-id-from-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_names",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_names",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": true,\n    \"key_1\": \"string\",\n    \"key_2\": 887,\n    \"key_3\": true\n  },\n  {\n    \"key_0\": 4146,\n    \"key_1\": 5643.853559897655,\n    \"key_2\": 9241\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "5719bb72-e558-4f87-815f-a89238fbd1dd",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-id-from-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_names",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_names",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3fd89d3e-4570-44a5-966e-755a352a180c",
+      "name": "Campaign Name From Id",
+      "request": {
+        "name": "Campaign Name From Id",
+        "description": {
+          "content": "Look up campaign names from campaign IDs.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-name-from-id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "71712ff1-0606-4e72-83ac-bfb1ef34a87d",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-name-from-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": \"string\"\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "9cfb7336-9cfe-42f8-a889-3a31706f3025",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-name-from-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "bdd58eca-5b5f-40de-bbeb-c6a8881fa921",
+      "name": "Campaign Summary",
+      "request": {
+        "name": "Campaign Summary",
+        "description": {
+          "content": "Campaign summary with name, advertiser ID, and advertiser name.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-summary"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_id",
+              "value": "<string>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b5019673-4cf9-4d95-a42b-fa91a9a982b3",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 9818,\n    \"key_1\": \"string\"\n  },\n  {\n    \"key_0\": 7036.946421663531,\n    \"key_1\": \"string\",\n    \"key_2\": 9790\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "42c12ee6-add4-4c88-95e4-8a08db64de57",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cb45e75f-e8f7-4cc7-bdc8-aa892a5fe2b4",
+      "name": "Child Campaign Ids From Parent Name",
+      "request": {
+        "name": "Child Campaign Ids From Parent Name",
+        "description": {
+          "content": "Look up all child campaign IDs for one or more parent YMax campaigns.\n\nProvide either parent_campaign_names or parent_campaign_ids (not both).\nReturns parent_campaign_id, parent_campaign_name, and campaign_id for each child.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "child-campaign-ids-from-parent-name"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "parent_campaign_names_or_ids",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "parent_campaign_names_or_ids",
+              "value": "<string>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "c5bbd529-ada9-4564-9712-4e824a28a040",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "child-campaign-ids-from-parent-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "parent_campaign_names_or_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "parent_campaign_names_or_ids",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": 9033,\n    \"key_3\": \"string\"\n  },\n  {\n    \"key_0\": 2455.6615708169816\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "654f750b-06c2-40f6-b498-e789f3c9d7ca",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "child-campaign-ids-from-parent-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "parent_campaign_names_or_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "parent_campaign_names_or_ids",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c975dc01-5200-44c7-b24b-3d2c08163049",
+      "name": "Campaign Performance",
+      "request": {
+        "name": "Campaign Performance",
+        "description": {
+          "content": "Campaign performance summary: impressions, clicks, CTR, spend, win rate.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-performance"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "5ccdcd85-1006-4491-9590-bc013fe572fa",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 7182.520195494013\n  },\n  {\n    \"key_0\": 6089.71205933722,\n    \"key_1\": false\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "a9209c59-688e-413f-8cd3-40fca5fe1b5e",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b608de40-e9e6-423a-ae5d-e34e4b1dd5cc",
+      "name": "Campaign Daily Spend",
+      "request": {
+        "name": "Campaign Daily Spend",
+        "description": {
+          "content": "Daily spend and impression breakdown over a date range.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-daily-spend"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "89615333-a114-41a4-acff-154c6d6b2610",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-daily-spend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 404\n  },\n  {\n    \"key_0\": 491.0217017235274\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "0d4bfca6-b6a8-48bf-b349-6bc6f0146bd1",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-daily-spend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0e61fce0-7446-4a0b-8c88-8e470b1b50f1",
+      "name": "Campaign Daily Performance",
+      "request": {
+        "name": "Campaign Daily Performance",
+        "description": {
+          "content": "Daily performance breakdown by date and segment.\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-daily-performance"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "kpi",
+              "value": "ctr"
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4ae8aaf0-e262-4083-8ba4-509813e95d86",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-daily-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": true,\n    \"key_1\": 7895.881730742663,\n    \"key_2\": false,\n    \"key_3\": \"string\",\n    \"key_4\": \"string\"\n  },\n  {\n    \"key_0\": 5947,\n    \"key_1\": false\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "313f4ca7-f049-48a0-b7e2-c69f538306f8",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-daily-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8c93ed2c-1f94-44df-9838-2eff9cb41e40",
+      "name": "Campaign Metrics",
+      "request": {
+        "name": "Campaign Metrics",
+        "description": {
+          "content": "Period-over-period performance metrics: impressions, KPI, spend, CPM, cost per action.\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-metrics"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "kpi",
+              "value": "ctr"
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7100fb1b-64dd-4bcb-9533-c25a1f12469e",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 7585.9199425796805\n  },\n  {\n    \"key_0\": 7708\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "c50f036e-bf84-40b3-b5ee-3fa9ab6ea6a3",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "79fcf0f5-b50a-409c-9a05-806d39f6b58d",
+      "name": "Campaign Creative Performance",
+      "request": {
+        "name": "Campaign Creative Performance",
+        "description": {
+          "content": "Creative-level performance by campaign: AdBuilder ID, format, impressions, clicks,\nMRC viewable impressions, video starts/completions (VCR), and spend.\n\nadbuilder_creative_id is null for programmatic campaigns where the DSP hosts the creative.\nvcr is null for non-video creatives.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-creative-performance"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "eef1a195-e75e-4bc5-9c3c-8b59228c3f46",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-creative-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 2551,\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  {\n    \"key_0\": 8676.073518708574,\n    \"key_1\": \"string\"\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "12d81a68-962e-4b70-be09-dd997a97521a",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-creative-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "de78e484-5004-4a55-a630-11bffb984210",
+      "name": "Top Urls By Campaign",
+      "request": {
+        "name": "Top Urls By Campaign",
+        "description": {
+          "content": "Top performing URLs ranked by impressions, spend, or CTR.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "top-urls-by-campaign"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "min_impressions",
+              "value": "0"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "100"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "69b9b4e2-b4c3-4136-aae9-1d7fc2adaab1",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "top-urls-by-campaign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "min_impressions",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": false,\n    \"key_1\": 4706.33855941601\n  },\n  {\n    \"key_0\": 9190\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "b4b303b1-6d82-4181-a4f0-789c8ca251f9",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "top-urls-by-campaign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "min_impressions",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3e241a7d-a18b-427b-8a5b-c635fa120dc7",
+      "name": "Top Bottom Urls",
+      "request": {
+        "name": "Top Bottom Urls",
+        "description": {
+          "content": "Top or bottom performing URLs ranked by a specified metric.\n\nfilter: column to sort by (total_imps, total_spend, total_kpi)\ntop: sort direction — DESC for top, ASC for bottom\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "top-bottom-urls"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "kpi",
+              "value": "ctr"
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "min_imps",
+              "value": "0"
+            },
+            {
+              "disabled": false,
+              "key": "filter",
+              "value": "total_imps"
+            },
+            {
+              "disabled": false,
+              "key": "top",
+              "value": "DESC"
+            },
+            {
+              "disabled": false,
+              "key": "num_entries",
+              "value": "50"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "34eed42f-0f4c-455c-87c6-326c1b12b369",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "top-bottom-urls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "min_imps",
+                  "value": "0"
+                },
+                {
+                  "key": "filter",
+                  "value": "total_imps"
+                },
+                {
+                  "key": "top",
+                  "value": "DESC"
+                },
+                {
+                  "key": "num_entries",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": false\n  },\n  {\n    \"key_0\": false\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "2e24d199-6018-44f8-92c3-fe23bd3dd718",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "top-bottom-urls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "min_imps",
+                  "value": "0"
+                },
+                {
+                  "key": "filter",
+                  "value": "total_imps"
+                },
+                {
+                  "key": "top",
+                  "value": "DESC"
+                },
+                {
+                  "key": "num_entries",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b55dbf69-3451-458b-bf55-5efb2a68c212",
+      "name": "Campaign Biddable Object Url Performance",
+      "request": {
+        "name": "Campaign Biddable Object Url Performance",
+        "description": {
+          "content": "Performance at biddable object / segment / URL level.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-biddable-object-url-performance"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "1000"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b1817fa8-046d-40ab-b801-67200ca50958",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-biddable-object-url-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "limit",
+                  "value": "1000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": true,\n    \"key_1\": 107.41536208725533\n  },\n  {\n    \"key_0\": false,\n    \"key_1\": 3845,\n    \"key_2\": 1004.903127066924\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "98cbef5b-1249-4c81-8ef5-6e816bdb1b78",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-biddable-object-url-performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "limit",
+                  "value": "1000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "63b1829f-6685-4004-9775-f6455f3dc043",
+      "name": "Web Campaign Check",
+      "request": {
+        "name": "Web Campaign Check",
+        "description": {
+          "content": "Check whether a campaign has web/URL data available for a given date range.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "web-campaign-check"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "f2900890-82e9-4269-b544-fe6527b1390e",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "web-campaign-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 328\n  },\n  {\n    \"key_0\": 4084,\n    \"key_1\": \"string\",\n    \"key_2\": 1914,\n    \"key_3\": 1234\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "a5ebb863-81dd-462b-a6d1-def8ac60e814",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "web-campaign-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ce16ab69-3f96-4187-85e3-47db0160f033",
+      "name": "Campaign Segment Demographic",
+      "request": {
+        "name": "Campaign Segment Demographic",
+        "description": {
+          "content": "Audience demographic composition with Experian index scores.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-segment-demographic"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "797510c1-c668-40c3-b2fa-bd43f99ec6f2",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-segment-demographic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": \"string\",\n    \"key_1\": false,\n    \"key_2\": 1036\n  },\n  {\n    \"key_0\": 1794\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "8c56492a-abe2-4d3d-be49-30b87bc260ec",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-segment-demographic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e356b7ab-d181-4d23-9a36-bba06ec32658",
+      "name": "Segment Description",
+      "request": {
+        "name": "Segment Description",
+        "description": {
+          "content": "Look up segment descriptions by segment ID.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "segment-description"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "segment_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "segment_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "af047c56-c816-4f42-af4b-12250a2433ca",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "segment-description"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "segment_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "segment_ids",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 1579.8210810532464,\n    \"key_1\": \"string\"\n  },\n  {\n    \"key_0\": false\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "bc902409-6792-474f-aa06-73a2dff0117d",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "segment-description"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "segment_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "segment_ids",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "bf18d6a6-dc8f-420d-904c-e5a99d93f0d2",
+      "name": "Topic Id",
+      "request": {
+        "name": "Topic Id",
+        "description": {
+          "content": "Top 10 browser topics by campaign impressions with audience index scores.\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "topic-id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "kpi",
+              "value": "ctr"
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "51093153-e71f-4968-a09b-2a43d7acd28f",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "topic-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 7991.870840513384\n  },\n  {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": 9378.425043639236,\n    \"key_3\": 1613.583087560081\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "d714ea8e-83a5-4950-be1d-b0f3ee490c62",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "topic-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d5e3734b-087c-4065-a8b3-76a767275f19",
+      "name": "Campaign Feature List Kpi",
+      "request": {
+        "name": "Campaign Feature List Kpi",
+        "description": {
+          "content": "KPI and impressions broken down by feature list values (device type, browser, OS, etc.).\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "campaign-feature-list-kpi"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "campaign_ids",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "kpi",
+              "value": "ctr"
+            },
+            {
+              "disabled": false,
+              "key": "feature_list",
+              "value": "<string>",
+              "description": "(Required) Feature list names, e.g. device_type, browser, os"
+            },
+            {
+              "disabled": false,
+              "key": "feature_list",
+              "value": "<string>",
+              "description": "(Required) Feature list names, e.g. device_type, browser, os"
+            },
+            {
+              "disabled": false,
+              "key": "start_date_key",
+              "value": "19000101"
+            },
+            {
+              "disabled": false,
+              "key": "end_date_key",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "18ed2fe4-8564-4e96-8775-732f8c3744cd",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-feature-list-kpi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "feature_list",
+                  "value": "<string>"
+                },
+                {
+                  "key": "feature_list",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": 4132\n  },\n  {\n    \"key_0\": 907,\n    \"key_1\": 4466,\n    \"key_2\": 2719\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "2e28d21e-ef55-47c6-abd5-d5ade42c79ab",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "campaign-feature-list-kpi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "campaign_ids",
+                  "value": "<string>"
+                },
+                {
+                  "key": "kpi",
+                  "value": "ctr"
+                },
+                {
+                  "key": "feature_list",
+                  "value": "<string>"
+                },
+                {
+                  "key": "feature_list",
+                  "value": "<string>"
+                },
+                {
+                  "key": "start_date_key",
+                  "value": "19000101"
+                },
+                {
+                  "key": "end_date_key",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "fd71fab7-dea0-44e9-9ebe-f0a6a1fea81c",
+      "name": "Conversion Types",
+      "request": {
+        "name": "Conversion Types",
+        "description": {
+          "content": "Return all rows from db_prd.ods.conversion_type.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "conversion-types"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "44bdf2e1-77d0-45a0-b080-3b0c1d3a6517",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "conversion-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  {\n    \"key_0\": false\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1e1448ab-bf4a-4e5e-80cd-8376921a70f8",
+      "name": "Advertiser Data",
+      "request": {
+        "name": "Advertiser Data",
+        "description": {
+          "content": "Retargeting and attributed conversion data for an advertiser in one call.\n\nReturns a dict with three keys:\n  - retargeting_dated: ods.retargeting rows filtered by date range\n  - retargeting_all: ods.retargeting rows for all dates\n  - attributed_conversions: ods.attributed_conversion rows\n\nstart_time defaults to 1900-01-01; end_time defaults to today.\nBoth must be valid YYYY-MM-DD dates and start_time must be before end_time.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "canned-reports",
+            "advertiser-data"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "advertiser_id",
+              "value": "<integer>",
+              "description": "(Required) Snowflake advertiser ID"
+            },
+            {
+              "disabled": false,
+              "key": "start_time",
+              "value": "1900-01-01",
+              "description": "Inclusive start YYYY-MM-DD for dated retargeting."
+            },
+            {
+              "disabled": false,
+              "key": "end_time",
+              "value": "<string>",
+              "description": "Exclusive end YYYY-MM-DD for dated retargeting. Defaults to today."
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "a3cef9cf-329b-4436-996d-7a0e0ab6e7fd",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "advertiser-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "advertiser_id",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "start_time",
+                  "value": "1900-01-01"
+                },
+                {
+                  "key": "end_time",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"key_0\": 7153.399640885399,\n  \"key_1\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "7f0b9a75-3d47-461b-8d9a-0e1136af22b9",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "canned-reports",
+                "advertiser-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "advertiser_id",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "start_time",
+                  "value": "1900-01-01"
+                },
+                {
+                  "key": "end_time",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "89e1714a-d331-47e3-a2e9-24e9996e81c9",
+      "name": "Oauth Authorization Server Metadata",
+      "request": {
+        "name": "Oauth Authorization Server Metadata",
+        "description": {},
+        "url": {
+          "path": [
+            ".well-known",
+            "openid-configuration"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "1872f645-9e2d-484b-bf69-3888d2f7c03f",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ".well-known",
+                "openid-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0148c8df-ad9d-40c3-8ea4-b929ff37cfb9",
+      "name": "Oauth Authorization Server Metadata",
+      "request": {
+        "name": "Oauth Authorization Server Metadata",
+        "description": {},
+        "url": {
+          "path": [
+            ".well-known",
+            "oauth-authorization-server"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "491ef832-1079-4fad-841b-591731bd9dd7",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ".well-known",
+                "oauth-authorization-server"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "89135d03-bee1-4751-a347-63e70daab0d2",
+      "name": "Oauth Protected Resource Metadata",
+      "request": {
+        "name": "Oauth Protected Resource Metadata",
+        "description": {},
+        "url": {
+          "path": [
+            ".well-known",
+            "oauth-protected-resource{{suffix}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "cdba26b1-6d71-4d56-8929-898d48245015",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ".well-known",
+                "oauth-protected-resource{{suffix}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "73ef8edd-a981-43c2-a1d9-30aea47ebde9",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ".well-known",
+                "oauth-protected-resource{{suffix}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "33e35c25-1eaf-46f2-b814-0e888d6fa428",
+      "name": "Fake Registration Mcp",
+      "request": {
+        "name": "Fake Registration Mcp",
+        "description": {},
+        "url": {
+          "path": [
+            "register"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b6e2dd38-50ef-40f7-b2bf-52456d65b33d",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "a365d006-3a09-4107-ae9f-3cb509be3ef4",
+      "name": "Ping",
+      "request": {
+        "name": "Ping",
+        "description": {},
+        "url": {
+          "path": [
+            "dcs",
+            "mcp",
+            "manage",
+            "health"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "1275461a-4415-4816-a882-d41bbd98e96b",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "dcs",
+                "mcp",
+                "manage",
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "fc6cbf49-0c07-4a13-af8b-7a48c25072af",
+      "name": "Ping",
+      "request": {
+        "name": "Ping",
+        "description": {},
+        "url": {
+          "path": [
+            "mcp",
+            "manage",
+            "health"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "e30bc1bf-7619-4194-9129-6f47fe74eb73",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "mcp",
+                "manage",
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "421e6a9d-af39-464c-94a0-b1f666ce1d93",
+      "name": "Ping",
+      "request": {
+        "name": "Ping",
+        "description": {},
+        "url": {
+          "path": [
+            "manage",
+            "health"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "88cdb1e5-8aa3-49db-b661-63975bba340d",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "manage",
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2e1a3f01-38b8-4b5a-9a07-c09797f09e17",
+      "name": "Ping",
+      "request": {
+        "name": "Ping",
+        "description": {},
+        "url": {
+          "path": [
+            "ping"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "e800374d-7e01-46b0-a457-7d59820bf900",
+          "name": "Successful Response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "ping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/dcs/mcp",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "suffix"
+    }
+  ],
+  "info": {
+    "_postman_id": "7eac83d8-f6a8-4316-bd5e-eed6ba558f5e",
+    "name": "FastAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

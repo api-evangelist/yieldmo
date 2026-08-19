@@ -1,0 +1,649 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastAPI",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaign Id From Name",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-id-from-name",
+        "params": [
+          {
+            "name": "campaign_names",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Look up campaign IDs from campaign names."
+    },
+    {
+      "info": {
+        "name": "Campaign Name From Id",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-name-from-id",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Look up campaign names from campaign IDs."
+    },
+    {
+      "info": {
+        "name": "Campaign Summary",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-summary",
+        "params": [
+          {
+            "name": "campaign_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Campaign summary with name, advertiser ID, and advertiser name."
+    },
+    {
+      "info": {
+        "name": "Child Campaign Ids From Parent Name",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/child-campaign-ids-from-parent-name",
+        "params": [
+          {
+            "name": "parent_campaign_names_or_ids",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Look up all child campaign IDs for one or more parent YMax campaigns.\n\nProvide either parent_campaign_names or parent_campaign_ids (not both).\nReturns parent_campaign_id, parent_campaign_name, and campaign_id for each child."
+    },
+    {
+      "info": {
+        "name": "Campaign Performance",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-performance",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Campaign performance summary: impressions, clicks, CTR, spend, win rate."
+    },
+    {
+      "info": {
+        "name": "Campaign Daily Spend",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-daily-spend",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Daily spend and impression breakdown over a date range."
+    },
+    {
+      "info": {
+        "name": "Campaign Daily Performance",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-daily-performance",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "kpi",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Daily performance breakdown by date and segment.\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability"
+    },
+    {
+      "info": {
+        "name": "Campaign Metrics",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-metrics",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "kpi",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Period-over-period performance metrics: impressions, KPI, spend, CPM, cost per action.\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability"
+    },
+    {
+      "info": {
+        "name": "Campaign Creative Performance",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-creative-performance",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Creative-level performance by campaign: AdBuilder ID, format, impressions, clicks,\nMRC viewable impressions, video starts/completions (VCR), and spend.\n\nadbuilder_creative_id is null for programmatic campaigns where the DSP hosts the creative.\nvcr is null for non-video creatives."
+    },
+    {
+      "info": {
+        "name": "Top Urls By Campaign",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/top-urls-by-campaign",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "min_impressions",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Top performing URLs ranked by impressions, spend, or CTR."
+    },
+    {
+      "info": {
+        "name": "Top Bottom Urls",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/top-bottom-urls",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "kpi",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "min_imps",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "filter",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "top",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "num_entries",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Top or bottom performing URLs ranked by a specified metric.\n\nfilter: column to sort by (total_imps, total_spend, total_kpi)\ntop: sort direction — DESC for top, ASC for bottom\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability"
+    },
+    {
+      "info": {
+        "name": "Campaign Biddable Object Url Performance",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-biddable-object-url-performance",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Performance at biddable object / segment / URL level."
+    },
+    {
+      "info": {
+        "name": "Web Campaign Check",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/web-campaign-check",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Check whether a campaign has web/URL data available for a given date range."
+    },
+    {
+      "info": {
+        "name": "Campaign Segment Demographic",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-segment-demographic",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Audience demographic composition with Experian index scores."
+    },
+    {
+      "info": {
+        "name": "Segment Description",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/segment-description",
+        "params": [
+          {
+            "name": "segment_ids",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Look up segment descriptions by segment ID."
+    },
+    {
+      "info": {
+        "name": "Topic Id",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/topic-id",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "kpi",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Top 10 browser topics by campaign impressions with audience index scores.\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability"
+    },
+    {
+      "info": {
+        "name": "Campaign Feature List Kpi",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/campaign-feature-list-kpi",
+        "params": [
+          {
+            "name": "campaign_ids",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "kpi",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "feature_list",
+            "value": "",
+            "type": "query",
+            "description": "Feature list names, e.g. device_type, browser, os"
+          },
+          {
+            "name": "start_date_key",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_date_key",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "KPI and impressions broken down by feature list values (device type, browser, OS, etc.).\n\nkpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,\nplay_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability"
+    },
+    {
+      "info": {
+        "name": "Conversion Types",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/conversion-types"
+      },
+      "docs": "Return all rows from db_prd.ods.conversion_type."
+    },
+    {
+      "info": {
+        "name": "Advertiser Data",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/canned-reports/advertiser-data",
+        "params": [
+          {
+            "name": "advertiser_id",
+            "value": "",
+            "type": "query",
+            "description": "Snowflake advertiser ID"
+          },
+          {
+            "name": "start_time",
+            "value": "",
+            "type": "query",
+            "description": "Inclusive start YYYY-MM-DD for dated retargeting."
+          },
+          {
+            "name": "end_time",
+            "value": "",
+            "type": "query",
+            "description": "Exclusive end YYYY-MM-DD for dated retargeting. Defaults to today."
+          }
+        ]
+      },
+      "docs": "Retargeting and attributed conversion data for an advertiser in one call.\n\nReturns a dict with three keys:\n  - retargeting_dated: ods.retargeting rows filtered by date range\n  - retargeting_all: ods.retargeting rows for all dates\n  - attributed_conversions: ods.attributed_conversion rows\n\nstart_time defaults to 1900-01-01; end_time defaults to today.\nBoth must be valid YYYY-MM-DD dates and start_time must be before end_time."
+    },
+    {
+      "info": {
+        "name": "Oauth Authorization Server Metadata",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/.well-known/openid-configuration"
+      },
+      "docs": "Oauth Authorization Server Metadata"
+    },
+    {
+      "info": {
+        "name": "Oauth Authorization Server Metadata",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/.well-known/oauth-authorization-server"
+      },
+      "docs": "Oauth Authorization Server Metadata"
+    },
+    {
+      "info": {
+        "name": "Oauth Protected Resource Metadata",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/.well-known/oauth-protected-resource:suffix",
+        "params": [
+          {
+            "name": "suffix",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Oauth Protected Resource Metadata"
+    },
+    {
+      "info": {
+        "name": "Fake Registration Mcp",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "/dcs/mcp/register"
+      },
+      "docs": "Fake Registration Mcp"
+    },
+    {
+      "info": {
+        "name": "Ping",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/dcs/mcp/manage/health"
+      },
+      "docs": "Ping"
+    },
+    {
+      "info": {
+        "name": "Ping",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/mcp/manage/health"
+      },
+      "docs": "Ping"
+    },
+    {
+      "info": {
+        "name": "Ping",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/manage/health"
+      },
+      "docs": "Ping"
+    },
+    {
+      "info": {
+        "name": "Ping",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "/dcs/mcp/ping"
+      },
+      "docs": "Ping"
+    }
+  ],
+  "bundled": true
+}
