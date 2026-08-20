@@ -27,6 +27,22 @@ tags:
   - Header Bidding
   - Contextual Targeting
   - Ad Formats
+  - Supply Side Platform
+  - SSP
+  - Campaign Reporting
+  - Attention Analytics
+  - MCP
+  - Prebid
+  - AdTech
+tags_raw:
+  - Advertising
+  - Programmatic
+  - Native Advertising
+  - Ad Exchange
+  - Publisher Monetization
+  - Header Bidding
+  - Contextual Targeting
+  - Ad Formats
   - Supply-Side Platform
   - SSP
   - Campaign Reporting
@@ -41,6 +57,11 @@ apis:
     humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
     baseURL: https://ads.yieldmo.com
     tags:
+      - JavaScript SDK
+      - Ad Placements
+      - Publishers
+      - Single Page App
+    tags_raw:
       - JavaScript SDK
       - Ad Placements
       - Publisher
@@ -63,6 +84,12 @@ apis:
       - Prebid.js
       - Display
       - Video
+      - Publishers
+    tags_raw:
+      - Header Bidding
+      - Prebid.js
+      - Display
+      - Video
       - Publisher
     properties:
       - type: Documentation
@@ -78,6 +105,12 @@ apis:
     humanURL: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
     baseURL: https://ads.yieldmo.com
     tags:
+      - Synthetic Inventory
+      - Prebid.js
+      - Outstream Video
+      - Google Ad Manager
+      - Publishers
+    tags_raw:
       - Synthetic Inventory
       - Prebid.js
       - Outstream Video
