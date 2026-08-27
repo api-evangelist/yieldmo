@@ -51,122 +51,210 @@ tags_raw:
   - Prebid
   - AdTech
 apis:
-  - name: Yieldmo JavaScript SDK API
-    description: JavaScript SDK providing publisher-side API methods for managing ad placements and requesting page views in single-page applications and infinite scroll implementations. Enables dynamic ad loading without full page refreshes using placement IDs obtained from Yieldmo account management.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
-    baseURL: https://ads.yieldmo.com
-    tags:
-      - JavaScript SDK
-      - Ad Placements
-      - Publishers
-      - Single Page App
-    tags_raw:
-      - JavaScript SDK
-      - Ad Placements
-      - Publisher
-      - Single Page App
-    properties:
-      - type: Documentation
-        url: https://github.com/yieldmo/yieldmo-js-sdk/wiki
-      - type: GitHubRepository
-        url: https://github.com/yieldmo/yieldmo-js-sdk
-    contact:
-      - FN: Yieldmo Support
-        email: support@yieldmo.com
-  - name: Yieldmo Prebid.js Bid Adapter
-    description: Header bidding integration adapter for Prebid.js enabling publishers to receive bids from Yieldmo's exchange for display and video inventory. Supports placement-based targeting with optional bid floors and user identity modules for privacy-compliant audience matching.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
-    baseURL: https://ads.yieldmo.com
-    tags:
-      - Header Bidding
-      - Prebid.js
-      - Display
-      - Video
-      - Publishers
-    tags_raw:
-      - Header Bidding
-      - Prebid.js
-      - Display
-      - Video
-      - Publisher
-    properties:
-      - type: Documentation
-        url: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
-      - type: GitHubRepository
-        url: https://github.com/yieldmo/Prebid.js
-    contact:
-      - FN: Yieldmo Support
-        email: support@yieldmo.com
-  - name: Yieldmo Synthetic Inventory Module
-    description: Prebid.js module enabling publishers to integrate Yieldmo Synthetic Outstream ads by automatically creating placements and injecting the Yieldmo SDK. Requires a Yieldmo placement ID and Google Ad Manager ad unit path to deliver proprietary outstream video and high-impact ad formats.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
-    baseURL: https://ads.yieldmo.com
-    tags:
-      - Synthetic Inventory
-      - Prebid.js
-      - Outstream Video
-      - Google Ad Manager
-      - Publishers
-    tags_raw:
-      - Synthetic Inventory
-      - Prebid.js
-      - Outstream Video
-      - Google Ad Manager
-      - Publisher
-    properties:
-      - type: Documentation
-        url: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
-    contact:
-      - FN: Yieldmo Support
-        email: support@yieldmo.com
-  - name: Yieldmo YMax Platform API
-    description: Proprietary programmatic exchange and creative intelligence platform offering curated inventory access, contextual targeting, attention analytics, and deal management for advertisers and demand-side partners. Integrates with all major DSPs and supports PMP deal setup via The Trade Desk Easy Proposal API workflow. Transactions land on the Yieldmo exchange at ads.yieldmo.com, whose /exchange/prebid and /exchange/prebidvideo paths are published in the open-source Yieldmo Prebid bid adapter.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://yieldmo.com/technology/
-    baseURL: https://ads.yieldmo.com
-    tags:
-      - Exchange
-      - Programmatic
-      - Advertiser
-      - PMP Deals
-      - Attention Analytics
-      - DSP Integration
-    properties:
-      - type: Documentation
-        url: https://yieldmo.com/technology/
-    contact:
-      - FN: Yieldmo Sales
-        email: info@yieldmo.com
-  - name: Yieldmo DCS Reporting API
-    description: OAuth-protected campaign reporting and analytics API over Yieldmo YMax exchange data, served as both a Model Context Protocol server and a REST API by one application at api.yieldmo.com/dcs/mcp. Nineteen read-only operations cover campaign resolution, headline and daily performance, spend, creative-level results, top and bottom performing URLs, biddable-object and segment breakdowns, audience demographics with Experian index scores, browser topics, conversion types, and advertiser retargeting and attribution. Discovered by probing on 2026-08-12; the surface is live and machine-readable but undocumented on Yieldmo's public site.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://api.yieldmo.com/dcs/mcp/openapi.json
-    baseURL: https://api.yieldmo.com/dcs/mcp
-    tags:
-      - Reporting
-      - Analytics
-      - MCP
-      - Campaign Performance
-      - Attention Analytics
-      - OpenAPI
-    properties:
-      - type: OpenAPI
-        url: openapi/yieldmo-dcs-mcp-openapi.json
-      - type: MCPServer
-        url: mcp/yieldmo-mcp.yml
-      - type: ToolCrosswalk
-        url: mcp/yieldmo-tool-crosswalk.yml
-      - type: Overlay
-        url: overlays/yieldmo-dcs-mcp-overlay.yaml
-      - type: Authentication
-        url: authentication/yieldmo-authentication.yml
-    contact:
-      - FN: Yieldmo Support
-        email: support@yieldmo.com
+- name: Yieldmo JavaScript SDK API
+  description: >-
+    JavaScript SDK providing publisher-side API methods for managing ad placements and requesting page
+    views in single-page applications and infinite scroll implementations. Enables dynamic ad loading
+    without full page refreshes using placement IDs obtained from Yieldmo account management.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - JavaScript SDK
+  - Ad Placements
+  - Publishers
+  - Single Page App
+  tags_raw:
+  - JavaScript SDK
+  - Ad Placements
+  - Publisher
+  - Single Page App
+  properties:
+  - type: Documentation
+    url: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  - type: GitHubRepository
+    url: https://github.com/yieldmo/yieldmo-js-sdk
+  contact:
+  - FN: Yieldmo Support
+    email: support@yieldmo.com
+- name: Yieldmo Prebid.js Bid Adapter
+  description: >-
+    Header bidding integration adapter for Prebid.js enabling publishers to receive bids from Yieldmo's
+    exchange for display and video inventory. Supports placement-based targeting with optional bid floors
+    and user identity modules for privacy-compliant audience matching.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Header Bidding
+  - Prebid.js
+  - Display
+  - Video
+  - Publishers
+  tags_raw:
+  - Header Bidding
+  - Prebid.js
+  - Display
+  - Video
+  - Publisher
+  properties:
+  - type: Documentation
+    url: https://docs.prebid.org/dev-docs/bidders/yieldmo.html
+  - type: GitHubRepository
+    url: https://github.com/yieldmo/Prebid.js
+  contact:
+  - FN: Yieldmo Support
+    email: support@yieldmo.com
+- name: Yieldmo Synthetic Inventory Module
+  description: >-
+    Prebid.js module enabling publishers to integrate Yieldmo Synthetic Outstream ads by automatically
+    creating placements and injecting the Yieldmo SDK. Requires a Yieldmo placement ID and Google Ad Manager
+    ad unit path to deliver proprietary outstream video and high-impact ad formats.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Synthetic Inventory
+  - Prebid.js
+  - Outstream Video
+  - Google Ad Manager
+  - Publishers
+  tags_raw:
+  - Synthetic Inventory
+  - Prebid.js
+  - Outstream Video
+  - Google Ad Manager
+  - Publisher
+  properties:
+  - type: Documentation
+    url: https://docs.prebid.org/dev-docs/modules/yieldmoSyntheticInventoryModule.html
+  contact:
+  - FN: Yieldmo Support
+    email: support@yieldmo.com
+- name: Yieldmo YMax Platform API
+  description: >-
+    Proprietary programmatic exchange and creative intelligence platform offering curated inventory access,
+    contextual targeting, attention analytics, and deal management for advertisers and demand-side partners.
+    Integrates with all major DSPs and supports PMP deal setup via The Trade Desk Easy Proposal API workflow.
+    Transactions land on the Yieldmo exchange at ads.yieldmo.com, whose /exchange/prebid and /exchange/prebidvideo
+    paths are published in the open-source Yieldmo Prebid bid adapter.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://yieldmo.com/technology/
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Exchange
+  - Programmatic
+  - Advertiser
+  - PMP Deals
+  - Attention Analytics
+  - DSP Integration
+  properties:
+  - type: Documentation
+    url: https://yieldmo.com/technology/
+  contact:
+  - FN: Yieldmo Sales
+    email: info@yieldmo.com
+- aid: yieldmo:yieldmo-canned-reports-api
+  name: Yieldmo Canned Reports API
+  description: The Canned Reports API from Yieldmo — 19 operation(s) for canned reports.
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Canned Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/yieldmo-canned-reports-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
+- aid: yieldmo:yieldmo-dcs-api
+  name: Yieldmo Dcs API
+  description: The Dcs API from Yieldmo — 1 operation(s) for dcs.
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Dcs
+  properties:
+  - type: OpenAPI
+    url: openapi/yieldmo-dcs-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
+- aid: yieldmo:yieldmo-manage-api
+  name: Yieldmo Manage API
+  description: The Manage API from Yieldmo — 1 operation(s) for manage.
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Manage
+  properties:
+  - type: OpenAPI
+    url: openapi/yieldmo-manage-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
+- aid: yieldmo:yieldmo-mcp-api
+  name: Yieldmo MCP API
+  description: The Mcp API from Yieldmo — 1 operation(s) for mcp.
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Mcp
+  properties:
+  - type: OpenAPI
+    url: openapi/yieldmo-mcp-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
+- aid: yieldmo:yieldmo-ping-api
+  name: Yieldmo Ping API
+  description: The Ping API from Yieldmo — 1 operation(s) for ping.
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Ping
+  properties:
+  - type: OpenAPI
+    url: openapi/yieldmo-ping-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
+- aid: yieldmo:yieldmo-register-api
+  name: Yieldmo Register API
+  description: The Register API from Yieldmo — 1 operation(s) for register.
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - Register
+  properties:
+  - type: OpenAPI
+    url: openapi/yieldmo-register-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
+- aid: yieldmo:yieldmo-well-known-api
+  name: Yieldmo .well Known API
+  description: The .well Known API from Yieldmo — 3 operation(s) for .well known.
+  humanURL: https://github.com/yieldmo/yieldmo-js-sdk/wiki
+  baseURL: https://ads.yieldmo.com
+  tags:
+  - .well Known
+  properties:
+  - type: OpenAPI
+    url: openapi/yieldmo-well-known-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/yieldmo-tool-crosswalk.yml
+  - type: Authentication
+    url: authentication/yieldmo-authentication.yml
 common:
+  - type: Overlay
+    url: overlays/yieldmo-dcs-mcp-overlay.yaml
   - type: DomainSecurity
     url: security/yieldmo-domain-security.yml
   - type: Website
