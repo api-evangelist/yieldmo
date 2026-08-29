@@ -1,6 +1,18 @@
 aid: yieldmo
 name: Yieldmo
 description: Yieldmo is a programmatic native advertising marketplace and smart exchange that differentiates and enhances the value of ad inventory for buyers and sellers. The platform provides REST APIs and JavaScript SDKs for managing ad placements, proprietary ad formats, contextual targeting, publisher inventory monetization, and campaign performance analytics powered by attention data and machine learning.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: unknown
@@ -253,6 +265,8 @@ apis:
   - type: Authentication
     url: authentication/yieldmo-authentication.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/yieldmo/yieldmo-js-sdk/issues
   - type: Overlay
     url: overlays/yieldmo-dcs-mcp-overlay.yaml
   - type: DomainSecurity
