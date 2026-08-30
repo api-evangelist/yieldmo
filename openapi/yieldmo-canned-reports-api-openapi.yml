@@ -1,0 +1,1008 @@
+openapi: 3.2.0
+info:
+  title: Fast Canned Reports API
+  version: 0.1.0
+servers:
+- url: /dcs/mcp
+tags:
+- name: Canned Reports
+paths:
+  /canned-reports/campaign-id-from-name:
+    get:
+      summary: Campaign Id From Name
+      description: Look up campaign IDs from campaign names.
+      operationId: campaign_id_from_name_canned_reports_campaign_id_from_name_get
+      parameters:
+      - name: campaign_names
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Names
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Id From Name Canned Reports Campaign Id From Name Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-name-from-id:
+    get:
+      summary: Campaign Name From Id
+      description: Look up campaign names from campaign IDs.
+      operationId: campaign_name_from_id_canned_reports_campaign_name_from_id_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Name From Id Canned Reports Campaign Name From Id Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-summary:
+    get:
+      summary: Campaign Summary
+      description: Campaign summary with name, advertiser ID, and advertiser name.
+      operationId: campaign_summary_canned_reports_campaign_summary_get
+      parameters:
+      - name: campaign_id
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Campaign Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Summary Canned Reports Campaign Summary Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/child-campaign-ids-from-parent-name:
+    get:
+      summary: Child Campaign Ids From Parent Name
+      description: 'Look up all child campaign IDs for one or more parent YMax campaigns.
+
+
+        Provide either parent_campaign_names or parent_campaign_ids (not both).
+
+        Returns parent_campaign_id, parent_campaign_name, and campaign_id for each child.'
+      operationId: child_campaign_ids_from_parent_name_canned_reports_child_campaign_ids_from_parent_name_get
+      parameters:
+      - name: parent_campaign_names_or_ids
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: 'null'
+          title: Parent Campaign Names Or Ids
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Child Campaign Ids From Parent Name Canned Reports Child Campaign Ids From Parent Name Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-performance:
+    get:
+      summary: Campaign Performance
+      description: 'Campaign performance summary: impressions, clicks, CTR, spend, win rate.'
+      operationId: campaign_performance_canned_reports_campaign_performance_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      - name: limit
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: 5000
+          title: Limit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Performance Canned Reports Campaign Performance Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-daily-spend:
+    get:
+      summary: Campaign Daily Spend
+      description: Daily spend and impression breakdown over a date range.
+      operationId: campaign_daily_spend_canned_reports_campaign_daily_spend_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Daily Spend Canned Reports Campaign Daily Spend Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-daily-performance:
+    get:
+      summary: Campaign Daily Performance
+      description: 'Daily performance breakdown by date and segment.
+
+
+        kpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,
+
+        play_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability'
+      operationId: campaign_daily_performance_canned_reports_campaign_daily_performance_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: kpi
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ctr
+          title: Kpi
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Daily Performance Canned Reports Campaign Daily Performance Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-metrics:
+    get:
+      summary: Campaign Metrics
+      description: 'Period-over-period performance metrics: impressions, KPI, spend, CPM, cost per action.
+
+
+        kpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,
+
+        play_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability'
+      operationId: campaign_metrics_canned_reports_campaign_metrics_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: kpi
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ctr
+          title: Kpi
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Metrics Canned Reports Campaign Metrics Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-creative-performance:
+    get:
+      summary: Campaign Creative Performance
+      description: 'Creative-level performance by campaign: AdBuilder ID, format, impressions, clicks,
+
+        MRC viewable impressions, video starts/completions (VCR), and spend.
+
+
+        adbuilder_creative_id is null for programmatic campaigns where the DSP hosts the creative.
+
+        vcr is null for non-video creatives.'
+      operationId: campaign_creative_performance_canned_reports_campaign_creative_performance_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      - name: limit
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: 5000
+          title: Limit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Creative Performance Canned Reports Campaign Creative Performance Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/top-urls-by-campaign:
+    get:
+      summary: Top Urls By Campaign
+      description: Top performing URLs ranked by impressions, spend, or CTR.
+      operationId: top_urls_by_campaign_canned_reports_top_urls_by_campaign_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      - name: min_impressions
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          title: Min Impressions
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+          title: Limit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Top Urls By Campaign Canned Reports Top Urls By Campaign Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/top-bottom-urls:
+    get:
+      summary: Top Bottom Urls
+      description: 'Top or bottom performing URLs ranked by a specified metric.
+
+
+        filter: column to sort by (total_imps, total_spend, total_kpi)
+
+        top: sort direction — DESC for top, ASC for bottom
+
+        kpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,
+
+        play_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability'
+      operationId: top_bottom_urls_canned_reports_top_bottom_urls_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: kpi
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ctr
+          title: Kpi
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      - name: min_imps
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          title: Min Imps
+      - name: filter
+        in: query
+        required: false
+        schema:
+          type: string
+          default: total_imps
+          title: Filter
+      - name: top
+        in: query
+        required: false
+        schema:
+          type: string
+          default: DESC
+          title: Top
+      - name: num_entries
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 50
+          title: Num Entries
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Top Bottom Urls Canned Reports Top Bottom Urls Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-biddable-object-url-performance:
+    get:
+      summary: Campaign Biddable Object Url Performance
+      description: Performance at biddable object / segment / URL level.
+      operationId: campaign_biddable_object_url_performance_canned_reports_campaign_biddable_object_url_performance_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1000
+          title: Limit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Biddable Object Url Performance Canned Reports Campaign Biddable Object Url Performance Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/web-campaign-check:
+    get:
+      summary: Web Campaign Check
+      description: Check whether a campaign has web/URL data available for a given date range.
+      operationId: web_campaign_check_canned_reports_web_campaign_check_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Web Campaign Check Canned Reports Web Campaign Check Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-segment-demographic:
+    get:
+      summary: Campaign Segment Demographic
+      description: Audience demographic composition with Experian index scores.
+      operationId: campaign_segment_demographic_canned_reports_campaign_segment_demographic_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Segment Demographic Canned Reports Campaign Segment Demographic Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/segment-description:
+    get:
+      summary: Segment Description
+      description: Look up segment descriptions by segment ID.
+      operationId: segment_description_canned_reports_segment_description_get
+      parameters:
+      - name: segment_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Segment Ids
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Segment Description Canned Reports Segment Description Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/topic-id:
+    get:
+      summary: Topic Id
+      description: 'Top 10 browser topics by campaign impressions with audience index scores.
+
+
+        kpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,
+
+        play_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability'
+      operationId: topic_id_canned_reports_topic_id_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: kpi
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ctr
+          title: Kpi
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Topic Id Canned Reports Topic Id Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/campaign-feature-list-kpi:
+    get:
+      summary: Campaign Feature List Kpi
+      description: 'KPI and impressions broken down by feature list values (device type, browser, OS, etc.).
+
+
+        kpi options: ctr, attn, mrc, mrc_cpm_non_video, vcr_imps, vcr_play,
+
+        play_rate, cpm, cpm_non_video, cpm_video, cpc, cpcv, groupm, groupm_viewability'
+      operationId: campaign_feature_list_kpi_canned_reports_campaign_feature_list_kpi_get
+      parameters:
+      - name: campaign_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          title: Campaign Ids
+      - name: kpi
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ctr
+          title: Kpi
+      - name: feature_list
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          description: Feature list names, e.g. device_type, browser, os
+          title: Feature List
+        description: Feature list names, e.g. device_type, browser, os
+      - name: start_date_key
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 19000101
+          title: Start Date Key
+      - name: end_date_key
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Date Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                title: Response Campaign Feature List Kpi Canned Reports Campaign Feature List Kpi Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+  /canned-reports/conversion-types:
+    get:
+      summary: Conversion Types
+      description: Return all rows from db_prd.ods.conversion_type.
+      operationId: conversion_types_canned_reports_conversion_types_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  additionalProperties: true
+                  type: object
+                type: array
+                title: Response Conversion Types Canned Reports Conversion Types Get
+      tags:
+      - Canned Reports
+  /canned-reports/advertiser-data:
+    get:
+      summary: Advertiser Data
+      description: "Retargeting and attributed conversion data for an advertiser in one call.\n\nReturns a dict with three keys:\n  - retargeting_dated: ods.retargeting rows filtered by date range\n  - retargeting_all: ods.retargeting rows for all dates\n  - attributed_conversions: ods.attributed_conversion rows\n\nstart_time defaults to 1900-01-01; end_time defaults to today.\nBoth must be valid YYYY-MM-DD dates and start_time must be before end_time."
+      operationId: advertiser_data_canned_reports_advertiser_data_get
+      parameters:
+      - name: advertiser_id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: Snowflake advertiser ID
+          title: Advertiser Id
+        description: Snowflake advertiser ID
+      - name: start_time
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Inclusive start YYYY-MM-DD for dated retargeting.
+          default: '1900-01-01'
+          title: Start Time
+        description: Inclusive start YYYY-MM-DD for dated retargeting.
+      - name: end_time
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Exclusive end YYYY-MM-DD for dated retargeting. Defaults to today.
+          title: End Time
+        description: Exclusive end YYYY-MM-DD for dated retargeting. Defaults to today.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response Advertiser Data Canned Reports Advertiser Data Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Canned Reports
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

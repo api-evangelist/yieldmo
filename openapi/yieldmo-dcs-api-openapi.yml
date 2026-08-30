@@ -1,0 +1,21 @@
+openapi: 3.2.0
+info:
+  title: Fast Dcs API
+  version: 0.1.0
+servers:
+- url: /dcs/mcp
+tags:
+- name: Dcs
+paths:
+  /dcs/mcp/manage/health:
+    get:
+      summary: Ping
+      operationId: ping_dcs_mcp_manage_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Dcs

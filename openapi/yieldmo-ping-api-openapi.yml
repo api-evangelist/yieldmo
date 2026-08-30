@@ -1,0 +1,21 @@
+openapi: 3.2.0
+info:
+  title: Fast Ping API
+  version: 0.1.0
+servers:
+- url: /dcs/mcp
+tags:
+- name: Ping
+paths:
+  /ping:
+    get:
+      summary: Ping
+      operationId: ping_ping_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Ping

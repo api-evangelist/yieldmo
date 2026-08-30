@@ -1,0 +1,95 @@
+openapi: 3.2.0
+info:
+  title: Fast .well Known API
+  version: 0.1.0
+servers:
+- url: /dcs/mcp
+tags:
+- name: .well Known
+paths:
+  /.well-known/openid-configuration:
+    get:
+      summary: Oauth Authorization Server Metadata
+      operationId: oauth_authorization_server_metadata__well_known_openid_configuration_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - .well Known
+  /.well-known/oauth-authorization-server:
+    get:
+      summary: Oauth Authorization Server Metadata
+      operationId: oauth_authorization_server_metadata__well_known_oauth_authorization_server_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - .well Known
+  /.well-known/oauth-protected-resource{suffix}:
+    get:
+      summary: Oauth Protected Resource Metadata
+      operationId: oauth_protected_resource_metadata__well_known_oauth_protected_resource_suffix__get
+      parameters:
+      - name: suffix
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Suffix
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - .well Known
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

@@ -1,0 +1,21 @@
+openapi: 3.2.0
+info:
+  title: Fast MCP API
+  version: 0.1.0
+servers:
+- url: /dcs/mcp
+tags:
+- name: Mcp
+paths:
+  /mcp/manage/health:
+    get:
+      summary: Ping
+      operationId: ping_mcp_manage_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Mcp

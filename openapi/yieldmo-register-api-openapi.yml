@@ -1,0 +1,21 @@
+openapi: 3.2.0
+info:
+  title: Fast Register API
+  version: 0.1.0
+servers:
+- url: /dcs/mcp
+tags:
+- name: Register
+paths:
+  /register:
+    post:
+      summary: Fake Registration Mcp
+      operationId: fake_registration_mcp_register_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Register
