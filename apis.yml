@@ -99,7 +99,7 @@ apis:
   tags:
   - Header Bidding
   - Prebid.js
-  - Display
+  - Displays
   - Video
   - Publishers
   tags_raw:
@@ -153,6 +153,13 @@ apis:
   humanURL: https://yieldmo.com/technology/
   baseURL: https://ads.yieldmo.com
   tags:
+  - Exchange
+  - Programmatic
+  - Advertisers
+  - PMP Deals
+  - Attention Analytics
+  - DSP Integration
+  tags_raw:
   - Exchange
   - Programmatic
   - Advertiser
