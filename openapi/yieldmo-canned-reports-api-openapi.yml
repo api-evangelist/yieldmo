@@ -922,7 +922,21 @@ paths:
   /canned-reports/advertiser-data:
     get:
       summary: Advertiser Data
-      description: "Retargeting and attributed conversion data for an advertiser in one call.\n\nReturns a dict with three keys:\n  - retargeting_dated: ods.retargeting rows filtered by date range\n  - retargeting_all: ods.retargeting rows for all dates\n  - attributed_conversions: ods.attributed_conversion rows\n\nstart_time defaults to 1900-01-01; end_time defaults to today.\nBoth must be valid YYYY-MM-DD dates and start_time must be before end_time."
+      description: 'Retargeting and attributed conversion data for an advertiser in one call.
+
+
+        Returns a dict with three keys:
+
+        - retargeting_dated: ods.retargeting rows filtered by date range
+
+        - retargeting_all: ods.retargeting rows for all dates
+
+        - attributed_conversions: ods.attributed_conversion rows
+
+
+        start_time defaults to 1900-01-01; end_time defaults to today.
+
+        Both must be valid YYYY-MM-DD dates and start_time must be before end_time.'
       operationId: advertiser_data_canned_reports_advertiser_data_get
       parameters:
       - name: advertiser_id
@@ -971,6 +985,15 @@ paths:
       - Canned Reports
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -997,12 +1020,3 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
