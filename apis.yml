@@ -278,6 +278,9 @@ apis:
   - type: Authentication
     url: authentication/yieldmo-authentication.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/yieldmo-capability-edges.yml
+    name: Yieldmo Business Capability Map
   - type: IssueTracker
     url: https://github.com/yieldmo/yieldmo-js-sdk/issues
   - type: Overlay
