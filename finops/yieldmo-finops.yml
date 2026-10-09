@@ -1,3 +1,11 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+# Coverage demoted 2026-10-07 (roadmap#942, PLAN.md Stage A): this file was written by an API Evangelist
+# sweep and names no billing unit, meters or pricing category read from the provider — it restates the
+# FinOps framework. It is `x-coverage: unmeasured`, and the FOCUS alignment it claimed has been removed.
+x-coverage: unmeasured
+method: generated
 name: Yieldmo FinOps
 description: Financial operations considerations for teams integrating with Yieldmo's programmatic advertising marketplace. Yieldmo operates on negotiated commercial terms for both publisher and advertiser relationships. Cost management focuses on CPM efficiency, attention-based optimization, and deal structure rather than API call metering.
 url: https://yieldmo.com/solutions/

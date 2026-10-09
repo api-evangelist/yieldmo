@@ -57,3 +57,28 @@ plans:
       - Dedicated account management
       - Custom reporting and analytics
       - Bespoke targeting strategies
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Publisher Partnership
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Advertiser / DSP Integration
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise / Custom
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
